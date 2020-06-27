@@ -1,0 +1,4 @@
+.reposList{
+    display: flex;
+    flex-direction: column;
+}

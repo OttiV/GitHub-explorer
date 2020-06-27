@@ -1,2 +1,2 @@
-export { default as RepositoriesList } from "./RepositoriesList";
-export { default as SearchBox } from "./SearchBox";
+export { HomePage } from "./HomePage";
+export { RepoDetails } from "./RepoDetails";

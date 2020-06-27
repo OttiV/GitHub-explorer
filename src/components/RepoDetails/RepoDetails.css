@@ -1,0 +1,16 @@
+.repoDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 40px;
+}
+
+.avatar {
+  max-width: 180px;
+  max-height: 180px;
+  border-radius: 50%;
+}
+
+.info {
+  margin: 20px auto;
+}

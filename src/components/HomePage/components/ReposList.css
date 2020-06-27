@@ -1,4 +1,22 @@
-.reposList{
-    display: flex;
-    flex-direction: column;
+.reposList {
+  display: flex;
+  flex-direction: column;
+}
+
+.repoLine,
+.repoLine:active {
+  text-decoration: none;
+  cursor: pointer;
+  border: #282c34 1px solid;
+  border-radius: 0.2em;
+  height: 30px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  color: #282c34;
+}
+
+.repoLine:hover {
+  background-color: #282c34;
+  color: white;
 }

@@ -1,27 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCoordinates } from "../../actions/location";
+import { getCoordinates, getTimeFromCoordinates } from "../../actions/location";
 import Header from "./Header";
 
 class HeaderContainer extends Component {
-  getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.props.getCoordinates);
-    } else {
-      alert("Geolocation is not supported by this browser");
-    }
-  };
+  componentDidMount() {
+    const { getCoordinates } = this.props;
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getCoordinates);
+      } else {
+        alert("Geolocation is not supported by this browser");
+      }
+    };
+    getLocation();
+  }
 
+  componentDidUpdate() {
+    const { latitude, longitude, getTimeFromCoordinates } = this.props;
+    getTimeFromCoordinates(latitude, longitude);
+  }
   render() {
-    const { latitude, longitude } = this.props;
-
+    const { time } = this.props;
     return (
       <div className="headerContainer">
-        <Header
-          latitude={latitude}
-          longitude={longitude}
-          getLocation={this.getLocation}
-        />
+        <Header time={time} />
       </div>
     );
   }
@@ -29,10 +32,11 @@ class HeaderContainer extends Component {
 
 const mapStateToProps = state => ({
   latitude: state.location.latitude,
-  longitude: state.location.longitude
+  longitude: state.location.longitude,
+  time: state.location.time
 });
 
 export default connect(
   mapStateToProps,
-  { getCoordinates }
+  { getCoordinates, getTimeFromCoordinates }
 )(HeaderContainer);

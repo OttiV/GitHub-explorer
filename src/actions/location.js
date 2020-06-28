@@ -1,10 +1,14 @@
+import request from "superagent";
+
 export const LATITUDE_FETCHED = "LATITUDE_FETCHED";
 export const LONGITUDE_FETCHED = "LONGITUDE_FETCHED";
+export const TIME_FETCHED = "TIME_FETCHED";
 
 const latitudeFetched = latitude => ({
   type: LATITUDE_FETCHED,
   payload: latitude
 });
+
 const longitudeFetched = longitude => ({
   type: LONGITUDE_FETCHED,
   payload: longitude
@@ -16,10 +20,17 @@ export const getCoordinates = position => dispatch => {
   dispatch(longitudeFetched(longitude));
 };
 
-export const getLocation = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getCoordinates);
-  } else {
-    alert("Geolocation is not supported by this browser");
-  }
+const timeFetched = time => ({
+  type: TIME_FETCHED,
+  payload: time
+});
+
+export const getTimeFromCoordinates = (latitude, longitude) => dispatch => {
+  request(
+    `http://api.geonames.org/timezoneJSON?lat=${latitude}&lng=${longitude}&username=ovignani`
+  )
+    .then(response => {
+      dispatch(timeFetched(response.body.time));
+    })
+    .catch(console.error);
 };

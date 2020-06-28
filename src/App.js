@@ -1,8 +1,11 @@
 import React, { lazy, Suspense, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Header, HomePage } from "./components";
+import { Route, Switch } from "react-router-dom";
+import { Header } from "./components";
 // import { GOOGLE_MAP_KEY } from "./config";
 const RepoDetails = lazy(() => import("./components/RepoDetails/RepoDetails"));
+const ReposListContainer = lazy(() =>
+  import("./components/RepoList/ReposListContainer")
+);
 
 function App() {
   const [latitude, setLatitude] = useState("");
@@ -36,17 +39,15 @@ function App() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Router>
-        <Header
-          latitude={latitude}
-          longitude={longitude}
-          getLocation={getLocation}
-        />
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/:name" component={RepoDetails} />
-        </Switch>
-      </Router>
+      <Header
+        latitude={latitude}
+        longitude={longitude}
+        getLocation={getLocation}
+      />
+      <Switch>
+        <Route path="/" exact component={ReposListContainer} />
+        <Route path="/:name" component={RepoDetails} />
+      </Switch>
     </Suspense>
   );
 }

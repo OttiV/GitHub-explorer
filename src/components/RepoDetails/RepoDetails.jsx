@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./RepoDetails.css";
+import { baseUrl } from "../../constants";
 
 const RepoDetails = ({ match }) => {
   const [repo, setRepo] = useState([]);
@@ -8,7 +9,7 @@ const RepoDetails = ({ match }) => {
 
   useEffect(() => {
     const startTime = new Date().getTime();
-    fetch("https://api.github.com/repositories")
+    fetch(baseUrl)
       .then(res => res.json())
       .then(data => {
         if (data.mesage) {

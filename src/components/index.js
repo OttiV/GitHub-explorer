@@ -1,3 +1,3 @@
 export { Header } from "./Header";
-export { HomePage } from "./HomePage";
+export { ReposListContainer } from "./RepoList";
 export { RepoDetails } from "./RepoDetails";

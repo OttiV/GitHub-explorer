@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCoordinates } from "../../actions/location";
+import { getCoordinates, getTimeFromCoordinates } from "../../actions/location";
 import Header from "./Header";
 
 class HeaderContainer extends Component {
@@ -13,14 +13,18 @@ class HeaderContainer extends Component {
   };
 
   render() {
-    const { latitude, longitude } = this.props;
-
+    const { latitude, longitude, time, getTimeFromCoordinates } = this.props;
+    const getUserTime = () => {
+      getTimeFromCoordinates(latitude, longitude);
+    };
     return (
       <div className="headerContainer">
         <Header
           latitude={latitude}
           longitude={longitude}
           getLocation={this.getLocation}
+          getUserTime={getUserTime}
+          time={time}
         />
       </div>
     );
@@ -29,10 +33,11 @@ class HeaderContainer extends Component {
 
 const mapStateToProps = state => ({
   latitude: state.location.latitude,
-  longitude: state.location.longitude
+  longitude: state.location.longitude,
+  time: state.location.time
 });
 
 export default connect(
   mapStateToProps,
-  { getCoordinates }
+  { getCoordinates, getTimeFromCoordinates }
 )(HeaderContainer);

@@ -11,7 +11,11 @@ const SearchBox = ({ search, handleInput, time }) => {
         placeholder="Enter repo title"
         className="inputField"
       />
-      <div className="time">It took {time}ms to load</div>
+      {time > 0 ? (
+        <div className="time">Time to load: {time}ms</div>
+      ) : (
+        <div className="time">Loading...</div>
+      )}
     </div>
   );
 };

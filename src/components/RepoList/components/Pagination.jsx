@@ -1,6 +1,6 @@
 import React from "react";
-import "./Pagination.css"
- 
+import "./Pagination.css";
+
 const Pagination = ({ reposPerPage, totalRepos, paginate }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalRepos / reposPerPage); i++) {
@@ -10,7 +10,7 @@ const Pagination = ({ reposPerPage, totalRepos, paginate }) => {
     <div className="pagination">
       {pageNumbers.map(number => (
         <div key={number} className="button" onClick={() => paginate(number)}>
-            {number}
+          {number}
         </div>
       ))}
     </div>

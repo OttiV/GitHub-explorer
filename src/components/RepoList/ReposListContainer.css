@@ -1,4 +1,11 @@
-.container {
+.wrapper {
   margin: 20px 250px;
   max-width: 70vw;
+}
+
+.time {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.8em;
+  margin: 20px 40px;
 }

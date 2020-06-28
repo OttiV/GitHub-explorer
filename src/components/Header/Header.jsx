@@ -9,7 +9,7 @@ const Header = ({ time }) => {
       <Link to="/" className="homeLink">
         GitHub Explorer
       </Link>
-      <div className="geoLocaton">
+      <div className="dateInfo">
         <span>{dateInfo}</span>
       </div>
     </div>

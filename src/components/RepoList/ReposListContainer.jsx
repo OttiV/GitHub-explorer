@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
 import { loadRepos } from "../../actions/repos";
 import { searchRepo } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
-import { ReposList, SearchBox, Pagination } from "./components";
+import { SearchBox } from "./components";
 import "./ReposListContainer.css";
+const ReposList = lazy(() => import("./components/ReposList"));
+const Pagination = lazy(() => import("./components/Pagination"));
 
 class ReposListContainer extends Component {
   componentDidMount() {
@@ -22,25 +24,31 @@ class ReposListContainer extends Component {
     const indexOfLastRepo = currentPage * reposPerPage;
     const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
     const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
-    const paginate = pageNumber => setCurrentPage(pageNumber);
     const filteredRepos = search
-      ? currentRepos.filter(repo =>
+      ? repos.filter(repo =>
           repo.name.toLowerCase().includes(search.toLowerCase())
         )
       : currentRepos;
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+    const totalRepos = search ? filteredRepos.length : repos.length;
     return (
       <div className="container">
-        <SearchBox search={search} handleInput={this.handleInput} time={time} />
-        {repos && (
-          <>
+        {time > 0 ? (
+          <div className="time">Time to load: {time}ms</div>
+        ) : (
+          <div className="time">Loading...</div>
+        )}
+        <div className="wrapper">
+          <SearchBox search={search} handleInput={this.handleInput} />
+          <Suspense fallback={<div>Loading...</div>}>
             <ReposList repos={filteredRepos} />
             <Pagination
               reposPerPage={reposPerPage}
-              totalRepos={repos.length}
+              totalRepos={totalRepos}
               paginate={paginate}
             />
-          </>
-        )}
+          </Suspense>
+        </div>
       </div>
     );
   }

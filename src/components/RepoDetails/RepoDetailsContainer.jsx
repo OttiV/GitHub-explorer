@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadRepo } from "../../actions/repos";
 import RepoDetails from "./RepoDetails";
 // import "./RepoDetailsContainer.css";
 
-class RepoDetailsContainer extends React.Component {
+class RepoDetailsContainer extends Component {
   componentDidMount() {
     const { match, loadRepo } = this.props;
     const id = parseInt(match.params.name);

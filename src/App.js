@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Header } from "./components";
+import { HeaderContainer as Header } from "./components";
 // import { GOOGLE_MAP_KEY } from "./config";
 const RepoDetails = lazy(() =>
   import("./components/RepoDetails/RepoDetailsContainer")
@@ -10,21 +10,6 @@ const ReposList = lazy(() =>
 );
 
 function App() {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const getCoordinates = position => {
-    const { latitude, longitude } = position.coords;
-    setLatitude(latitude);
-    setLongitude(longitude);
-  };
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getCoordinates);
-    } else {
-      alert("Geolocation is not supported by this browser");
-    }
-  };
   // Invesigate Google maps API
   // const reverseGeocodingWithGoogle = (latitude, longitude) => {
   //   fetch(
@@ -41,11 +26,7 @@ function App() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Header
-        latitude={latitude}
-        longitude={longitude}
-        getLocation={getLocation}
-      />
+      <Header />
       <Switch>
         <Route path="/" exact component={ReposList} />
         <Route path="/:name" component={RepoDetails} />

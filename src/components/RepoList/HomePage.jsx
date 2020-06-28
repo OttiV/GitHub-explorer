@@ -32,6 +32,7 @@
 //   // const indexOfLastRepo = currentPage * reposPerPage;
 //   // const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
 //   // const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
+//   // const paginate = pageNumber => setCurrentPage(pageNumber);
 
 //   // const filteredRepos =
 //   //   repos &&
@@ -39,7 +40,6 @@
 //   //     repo.name.toLowerCase().includes(search.toLowerCase())
 //   //   );
 
-//   // const paginate = pageNumber => setCurrentPage(pageNumber);
 
 //   return (
 //     <div className="container">

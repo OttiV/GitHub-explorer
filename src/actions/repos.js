@@ -26,7 +26,7 @@ export const loadRepos = () => dispatch => {
       dispatch(reposFetched(response.body));
       const endTime = getTime();
       const time = endTime - startTime;
-      dispatch(repoFetchedTime(time));
+      dispatch(reposFetchedTime(time));
     })
     .catch(console.error);
 };

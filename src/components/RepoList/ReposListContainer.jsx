@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadRepos } from "../../actions/repos";
 import { searchRepo } from "../../actions/search";
@@ -6,7 +6,7 @@ import ReposList from "./ReposList";
 import SearchBox from "./SearchBox";
 import "./ReposListContainer.css";
 
-class ReposListContainer extends React.Component {
+class ReposListContainer extends Component {
   componentDidMount() {
     this.props.loadRepos();
   }

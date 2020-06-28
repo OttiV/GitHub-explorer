@@ -1,8 +1,7 @@
 import React from "react";
 import "./SearchBox.css";
 
-const SearchBox = ({ search, handleInput }) => {
-  console.log(search);
+const SearchBox = ({ search, handleInput, time }) => {
   return (
     <div className="searchBox">
       <input
@@ -12,7 +11,7 @@ const SearchBox = ({ search, handleInput }) => {
         placeholder="Enter repo title"
         className="inputField"
       />
-      {/* <div className="time">It took {time}ms to load</div> */}
+      <div className="time">Time to load: {time}ms</div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ class ReposListContainer extends React.Component {
   };
 
   render() {
-    const { repos, search } = this.props;
+    const { repos, search, time } = this.props;
     const filteredRepos = search
       ? repos.filter(repo =>
           repo.name.toLowerCase().includes(search.toLowerCase())
@@ -24,7 +24,7 @@ class ReposListContainer extends React.Component {
       : repos;
     return (
       <div className="container">
-        <SearchBox search={search} handleInput={this.handleInput} />
+        <SearchBox search={search} handleInput={this.handleInput} time={time} />
         {repos && <ReposList repos={filteredRepos} />}
       </div>
     );
@@ -33,7 +33,8 @@ class ReposListContainer extends React.Component {
 
 const mapStateToProps = state => ({
   repos: state.repos === null ? null : Object.values(state.repos),
-  search: state.search.text
+  search: state.search,
+  time: state.time
 });
 
 export default connect(

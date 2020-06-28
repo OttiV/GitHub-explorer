@@ -2,8 +2,10 @@ import React, { lazy, Suspense, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Header } from "./components";
 // import { GOOGLE_MAP_KEY } from "./config";
-const RepoDetails = lazy(() => import("./components/RepoDetails/RepoDetails"));
-const ReposListContainer = lazy(() =>
+const RepoDetails = lazy(() =>
+  import("./components/RepoDetails/RepoDetailsContainer")
+);
+const ReposList = lazy(() =>
   import("./components/RepoList/ReposListContainer")
 );
 
@@ -45,7 +47,7 @@ function App() {
         getLocation={getLocation}
       />
       <Switch>
-        <Route path="/" exact component={ReposListContainer} />
+        <Route path="/" exact component={ReposList} />
         <Route path="/:name" component={RepoDetails} />
       </Switch>
     </Suspense>

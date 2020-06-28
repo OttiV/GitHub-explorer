@@ -4,28 +4,27 @@ import { getCoordinates, getTimeFromCoordinates } from "../../actions/location";
 import Header from "./Header";
 
 class HeaderContainer extends Component {
-  getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.props.getCoordinates);
-    } else {
-      alert("Geolocation is not supported by this browser");
-    }
-  };
-
-  render() {
-    const { latitude, longitude, time, getTimeFromCoordinates } = this.props;
-    const getUserTime = () => {
-      getTimeFromCoordinates(latitude, longitude);
+  componentDidMount() {
+    const { getCoordinates } = this.props;
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getCoordinates);
+      } else {
+        alert("Geolocation is not supported by this browser");
+      }
     };
+    getLocation();
+  }
+
+  componentDidUpdate() {
+    const { latitude, longitude, getTimeFromCoordinates } = this.props;
+    getTimeFromCoordinates(latitude, longitude);
+  }
+  render() {
+    const { time } = this.props;
     return (
       <div className="headerContainer">
-        <Header
-          latitude={latitude}
-          longitude={longitude}
-          getLocation={this.getLocation}
-          getUserTime={getUserTime}
-          time={time}
-        />
+        <Header time={time} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
-import { baseUrl } from "../constants";
 import request from "superagent";
+
+const baseUrl = "https://api.github.com/repositories";
 
 export const REPOS_FETCHED = "REPOS_FETCHED";
 export const REPO_FETCHED = "REPO_FETCHED";
@@ -9,12 +10,13 @@ export const REPOS_FETCHED_TIME = "REPOS_FETCHED_TIME";
 const getTime = () => {
   return new Date().getTime();
 };
+
 const reposFetched = repos => ({
   type: REPOS_FETCHED,
   payload: repos
 });
 
-export const reposFetchedTime = time => ({
+const reposFetchedTime = time => ({
   type: REPOS_FETCHED_TIME,
   payload: time
 });
@@ -31,12 +33,12 @@ export const loadRepos = () => dispatch => {
     .catch(console.error);
 };
 
-export const repoFetched = repo => ({
+const repoFetched = repo => ({
   type: REPO_FETCHED,
   payload: repo
 });
 
-export const repoFetchedTime = time => ({
+const repoFetchedTime = time => ({
   type: REPO_FETCHED_TIME,
   payload: time
 });

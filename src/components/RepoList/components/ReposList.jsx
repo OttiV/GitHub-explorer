@@ -4,10 +4,6 @@ import "./ReposList.css";
 
 const ReposList = ({ repos }) => {
   return (
-    // <>
-    //   {error ? (
-    //     <div>{error}</div>
-    //   ) : (
     <>
       <div className="reposList">
         {repos &&
@@ -21,8 +17,6 @@ const ReposList = ({ repos }) => {
           })}
       </div>
     </>
-    //   )}
-    // </>
   );
 };
 

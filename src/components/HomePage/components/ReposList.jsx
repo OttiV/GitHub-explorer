@@ -11,9 +11,9 @@ const ReposList = ({ error, repos, time }) => (
         <div className="reposList">
           {repos &&
             repos.map(repo => {
-              const { name } = repo;
+              const { name, id } = repo;
               return (
-                <Link key={repo.id} to={`/${name}`} className="repoLine">
+                <Link key={repo.id} to={`/${id}`} className="repoLine">
                   {name}
                 </Link>
               );

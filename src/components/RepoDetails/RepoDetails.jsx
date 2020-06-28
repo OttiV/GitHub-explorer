@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./RepoDetails.css";
 
 const RepoDetails = ({ match }) => {
-  const [repos, setRepos] = useState("");
+  const [repo, setRepo] = useState([]);
   const [time, setTime] = useState("");
   const [error, setError] = useState("");
+
   useEffect(() => {
     const startTime = new Date().getTime();
     fetch("https://api.github.com/repositories")
@@ -13,33 +14,36 @@ const RepoDetails = ({ match }) => {
         if (data.mesage) {
           setError(data.mesage);
         } else {
-          setRepos(data);
+          setRepo(data.filter(repo => repo.id === parseInt(match.params.name)));
         }
       });
     const endTime = new Date().getTime();
     const time = endTime - startTime;
     setTime(time);
   }, []);
-  const repoName = match.params.name;
-
-  const filteredRepo = repos && repos.filter(repo => repo.name === repoName);
-  const repo = filteredRepo[0];
-  console.log(repo && repo);
   return (
     <>
       {error || !repo ? (
         <div>{error}</div>
       ) : (
         <div className="repoDetailsContainer">
-          <div className="info">User: {repo.owner.login}</div>
-          <img
-            src={repo.owner.avatar_url}
-            alt={`${repo.owner.login} avatar`}
-            className="avatar"
-          />
-          <div className="info">Repo: {repo.name}</div>
-          <div className="info">Description: {repo.description}</div>
-          <div className="info">Fork: {repo.fork ? repo.fork : "nope"}</div>
+          {repo.map(repo => {
+            const { id, owner, name, description, fork } = repo;
+            const { login, avatar_url } = owner;
+            return (
+              <div key={id} className="repoDetails">
+                <div className="info">User: {login}</div>
+                <img
+                  src={avatar_url}
+                  alt={`${login} avatar`}
+                  className="avatar"
+                />
+                <div className="info">Repo: {name}</div>
+                <div className="info">Description: {description}</div>
+                <div className="info">Fork: {fork ? fork : "nope"}</div>
+              </div>
+            );
+          })}
           <div className="info">Time to load: {time}ms</div>
         </div>
       )}

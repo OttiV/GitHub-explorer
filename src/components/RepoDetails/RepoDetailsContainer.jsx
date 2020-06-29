@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
 import { loadRepo } from "../../actions/repos";
-import RepoDetails from "./RepoDetails";
-// import "./RepoDetailsContainer.css";
+const RepoDetails = lazy(() => import("./RepoDetails"));
 
 class RepoDetailsContainer extends Component {
   componentDidMount() {
@@ -13,10 +12,11 @@ class RepoDetailsContainer extends Component {
 
   render() {
     const { repo, time } = this.props;
+
     return (
-      <div className="container">
-        {repo && <RepoDetails repo={repo} time={time} />}
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <RepoDetails repo={repo} time={time} />
+      </Suspense>
     );
   }
 }

@@ -1,22 +1,20 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { HeaderContainer as Header } from "./components";
-const RepoDetails = lazy(() =>
-  import("./components/RepoDetails/RepoDetailsContainer")
-);
-const ReposList = lazy(() =>
-  import("./components/RepoList/ReposListContainer")
-);
+import {
+  HeaderContainer as Header,
+  RepoDetailsContainer as RepoDetails,
+  ReposListContainer as ReposList
+} from "./components";
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <div>
       <Header />
       <Switch>
-        <Route path="/" exact component={ReposList} />
+        <Route exact path="/" component={ReposList} />
         <Route path="/:name" component={RepoDetails} />
       </Switch>
-    </Suspense>
+    </div>
   );
 }
 

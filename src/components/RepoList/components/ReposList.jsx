@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ReposList.css";
 
-const ReposList = ({ repos }) => {
-  if (repos.length === 0) {
+const ReposList = ({ repos, loading }) => {
+  if (repos.length === 0 && !loading) {
     return <div className="noMatch">Sorry, no matches found</div>;
   }
   return (

@@ -10,15 +10,16 @@ describe("Header test cases", function() {
       .children(title)
       .contains("GitHub Explorer");
   });
-  it("Should display time and date of user location", function() {
-    cy.wait(2000);
-    cy.get(header)
-      .children(dateInfo)
-      .should("exist");
-  });
   it("Should send user to homepage when title is clicked", function() {
     cy.visit(`${baseUrl}1`);
     cy.get(title).click();
     cy.url(baseUrl);
+  });
+  it("Should display time and date of user location", function() {
+    cy.wait(5000);
+    cy.get(header)
+      .children(dateInfo)
+      .should("exist")
+      .and("be.visible");
   });
 });

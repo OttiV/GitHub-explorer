@@ -18,7 +18,14 @@ class ReposListContainer extends Component {
   };
 
   render() {
-    const { repos, search, time, setCurrentPage, pagination } = this.props;
+    const {
+      repos,
+      search,
+      time,
+      setCurrentPage,
+      pagination,
+      loading
+    } = this.props;
     const currentPage = pagination;
     const reposPerPage = 10;
     const indexOfLastRepo = currentPage * reposPerPage;
@@ -45,7 +52,7 @@ class ReposListContainer extends Component {
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
           <Suspense fallback={<div>Loading...</div>}>
-            <ReposList repos={reposToDisplay} />
+            <ReposList repos={reposToDisplay} loading={loading} />
             <Pagination
               reposPerPage={reposPerPage}
               totalRepos={totalRepos}
@@ -59,10 +66,11 @@ class ReposListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
+  loading: state.loading,
+  pagination: state.pagination,
   repos: state.repos === null ? null : Object.values(state.repos),
   search: state.search,
-  time: state.time,
-  pagination: state.pagination
+  time: state.time
 });
 
 export default connect(

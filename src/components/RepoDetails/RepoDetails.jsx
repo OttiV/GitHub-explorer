@@ -11,7 +11,9 @@ const RepoDetails = ({ repo, time }) => {
             Back
           </Link>
         </div>
-        <div className="timeToLoad" data-cy="timeToLoadRepo">Time to load: {time}ms</div>
+        <div className="timeToLoad" data-cy="timeToLoadRepo">
+          Time to load: {time}ms
+        </div>
       </div>
       <div className="repoDetailsWrapper" data-cy="repoDetailsWrapper">
         {repo.map(rep => {
@@ -44,7 +46,7 @@ const RepoDetails = ({ repo, time }) => {
                   rel="noreferrer noopener"
                   data-cy="repoLink"
                 >
-                  Click here to inspect {name} yourself
+                  Click here to inspect <strong>{name}</strong> yourself
                 </a>
               </div>
             </div>

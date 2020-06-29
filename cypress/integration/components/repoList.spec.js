@@ -11,7 +11,7 @@ describe("List test cases", function() {
   beforeEach(() => {
     cy.visit(baseUrl);
     cy.server();
-    mockGetReposList(true);
+    mockGetReposList();
   });
   it("Should display list", function() {
     cy.get(reposList)

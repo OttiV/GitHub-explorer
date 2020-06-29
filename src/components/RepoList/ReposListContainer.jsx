@@ -23,19 +23,17 @@ class ReposListContainer extends Component {
     const reposPerPage = 10;
     const indexOfLastRepo = currentPage * reposPerPage;
     const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
-    const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
-    const filteredRepos = search
-      ? repos.filter(repo =>
-          repo.name.toLowerCase().includes(search.toLowerCase())
-        )
-      : currentRepos;
+    const filteredRepos = repos.filter(repo =>
+      repo.name.toLowerCase().includes(search.toLowerCase())
+    );
+
     const paginate = pageNumber => setCurrentPage(pageNumber);
-    const totalRepos = search ? filteredRepos.length : repos.length;
-    // console.log("currentRepos", currentRepos);
-    // console.log(
-    //   "filteredRepos",
-    //   filteredRepos.slice(indexOfFirstRepo, indexOfLastRepo)
-    // );
+    const currentRepos = search ? filteredRepos : repos;
+    const totalRepos = currentRepos.length;
+    const reposToDisplay = currentRepos.slice(
+      indexOfFirstRepo,
+      indexOfLastRepo
+    );
 
     return (
       <div className="container" data-cy="timeToLoadList">
@@ -47,7 +45,7 @@ class ReposListContainer extends Component {
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
           <Suspense fallback={<div>Loading...</div>}>
-            <ReposList repos={filteredRepos} />
+            <ReposList repos={reposToDisplay} />
             <Pagination
               reposPerPage={reposPerPage}
               totalRepos={totalRepos}

@@ -13,7 +13,7 @@ describe("List page test cases", function() {
   beforeEach(() => {
     cy.visit(baseUrl);
     cy.server();
-    mockGetReposList(true);
+    mockGetReposList();
   });
   it("Should display header", function() {
     cy.get(header);

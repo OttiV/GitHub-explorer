@@ -6,7 +6,7 @@ describe("Pagination test cases", function() {
   beforeEach(() => {
     cy.visit(baseUrl);
     cy.server();
-    mockGetReposList(true);
+    mockGetReposList();
   });
   it("Should display pagination and buttons", function() {
     cy.get(pagination).children(paginationButton);

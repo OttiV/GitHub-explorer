@@ -15,7 +15,7 @@ describe("Repo details test cases", function() {
   beforeEach(() => {
     cy.visit(`${baseUrl}1`);
     cy.server();
-    mockGetRepoDetails(true);
+    mockGetRepoDetails();
   });
   it("Should display repo details container", function() {
     cy.get(repoDetailsWrapper).children(repoDetails);

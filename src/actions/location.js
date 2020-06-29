@@ -30,6 +30,9 @@ export const getTimeFromCoordinates = (latitude, longitude) => dispatch => {
     `http://api.geonames.org/timezoneJSON?lat=${latitude}&lng=${longitude}&username=ovignani`
   )
     .then(response => {
+      if (response.body.message) {
+        return alert("Oops " + JSON.stringify(response.body.message));
+      }
       dispatch(timeFetched(response.body.time));
     })
     .catch(console.error);

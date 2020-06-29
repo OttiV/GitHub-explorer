@@ -7,9 +7,9 @@ const Pagination = ({ reposPerPage, totalRepos, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <div className="pagination">
+    <div className="pagination" data-cy="pagination">
       {pageNumbers.map(number => (
-        <div key={number} className="button" onClick={() => paginate(number)}>
+        <div key={number} className="button" data-cy="paginationButton" onClick={() => paginate(number)}>
           {number}
         </div>
       ))}

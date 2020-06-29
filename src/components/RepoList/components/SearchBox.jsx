@@ -10,6 +10,7 @@ const SearchBox = ({ search, handleInput }) => {
         onChange={handleInput}
         placeholder="Enter repo title here..."
         className="inputField"
+        data-cy="searchInput"
       />
     </div>
   );

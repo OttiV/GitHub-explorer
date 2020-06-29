@@ -6,10 +6,10 @@ const Header = ({ time }) => {
   const dateInfo = time ? time : "";
   return (
     <div className="header" data-cy="header">
-      <Link to="/" className="homeLink">
+      <Link to="/" className="homeLink" data-cy="homeLink">
         GitHub Explorer
       </Link>
-      <div className="dateInfo">
+      <div className="dateInfo" data-cy="dateInfo">
         <span>{dateInfo}</span>
       </div>
     </div>

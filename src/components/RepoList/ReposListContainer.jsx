@@ -31,8 +31,14 @@ class ReposListContainer extends Component {
       : currentRepos;
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const totalRepos = search ? filteredRepos.length : repos.length;
+    // console.log("currentRepos", currentRepos);
+    // console.log(
+    //   "filteredRepos",
+    //   filteredRepos.slice(indexOfFirstRepo, indexOfLastRepo)
+    // );
+
     return (
-      <div className="container">
+      <div className="container" data-cy="timeToLoadList">
         {time > 0 ? (
           <div className="time">Time to load: {time}ms</div>
         ) : (

@@ -7,29 +7,43 @@ const RepoDetails = ({ repo, time }) => {
     <div className="repoDetailsContainer">
       <div className="top">
         <div className="backButton">
-          <Link to="/" className="backLink">
+          <Link to="/" className="backLink" data-cy="backButton">
             Back
           </Link>
         </div>
-        <div className="timeToLoad">Time to load: {time}ms</div>
+        <div className="timeToLoad" data-cy="timeToLoadRepo">Time to load: {time}ms</div>
       </div>
-      <div className="repoDetailsWrapper">
+      <div className="repoDetailsWrapper" data-cy="repoDetailsWrapper">
         {repo.map(rep => {
           const { id, owner, name, description, fork, html_url } = rep;
           const { login, avatar_url } = owner;
           return (
-            <div key={id} className="repoDetails">
-              <div className="info">User: {login}</div>
+            <div key={id} className="repoDetails" data-cy={`repoDetails-${id}`}>
+              <div className="info" data-cy="userName">
+                User: {login}
+              </div>
               <img
                 src={avatar_url}
                 alt={`${login} avatar`}
                 className="avatar"
+                data-cy="userAvatar"
               />
-              <div className="info">Repo: {name}</div>
-              <div className="info">Description: {description}</div>
-              <div className="info">Fork: {fork ? "yup" : "nope"}</div>
+              <div className="info" data-cy="repoTitle">
+                Repo: {name}
+              </div>
+              <div className="info" data-cy="repoDescription">
+                Description: {description}
+              </div>
+              <div className="info" data-cy="repoFork">
+                Fork: {fork ? "yup" : "nope"}
+              </div>
               <div className="info">
-                <a href={html_url} target="blank" rel="noreferrer noopener">
+                <a
+                  href={html_url}
+                  target="blank"
+                  rel="noreferrer noopener"
+                  data-cy="repoLink"
+                >
                   Click here to inspect {name} yourself
                 </a>
               </div>

@@ -19,6 +19,7 @@
 .repoLine:last-child {
   border-bottom: transparent;
 }
+
 .repoLine:active,
 .repoLine:visited {
   background-color: #ebf1ff;
@@ -27,4 +28,9 @@
 .repoLine:hover {
   background-color: #282c34;
   color: white;
+}
+
+.noMatch {
+  display: flex;
+  justify-content: center;
 }

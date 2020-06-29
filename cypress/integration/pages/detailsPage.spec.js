@@ -12,7 +12,7 @@ describe("Details page test cases", function() {
   beforeEach(() => {
     cy.visit(`${baseUrl}1`);
     cy.server();
-    mockGetRepoDetails(true);
+    mockGetRepoDetails();
   });
   it("Should display header", function() {
     cy.get(header);

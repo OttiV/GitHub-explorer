@@ -17,6 +17,8 @@ describe("Header test cases", function() {
       .should("exist");
   });
   it("Should send user to homepage when title is clicked", function() {
+    cy.visit(`${baseUrl}1`);
     cy.get(title).click();
+    cy.url(baseUrl);
   });
 });

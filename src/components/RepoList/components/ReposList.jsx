@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import "./ReposList.css";
 
 const ReposList = ({ repos }) => {
+  if (repos.length === 0) {
+    return <div className="noMatch">Sorry, no matches found</div>;
+  }
   return (
     <div className="reposList" data-cy="reposList">
       {repos.map(repo => {
         const { name, id } = repo;
+
         return (
           <Link
             key={repo.id}

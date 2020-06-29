@@ -25,6 +25,9 @@ export const loadRepos = () => dispatch => {
   const startTime = getTime();
   request(baseUrl)
     .then(response => {
+      if (response.body.message) {
+        return alert("Oops " + JSON.stringify(response.body.message));
+      }
       dispatch(reposFetched(response.body));
       const endTime = getTime();
       const time = endTime - startTime;
@@ -47,6 +50,9 @@ export const loadRepo = id => dispatch => {
   const startTime = getTime();
   request(baseUrl)
     .then(response => {
+      if (response.body.message) {
+        return alert("Oops " + JSON.stringify(response.body.message));
+      }
       const filteredResponse = response.body.filter(repo => repo.id === id);
       dispatch(repoFetched(filteredResponse));
       const endTime = getTime();

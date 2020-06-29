@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = ({ time }) => {
   const dateInfo = time ? time : "";
   return (
-    <div className="header">
+    <div className="header" data-cy="header">
       <Link to="/" className="homeLink">
         GitHub Explorer
       </Link>

@@ -15,4 +15,5 @@ To start the tests run`npm run cy:open`
 
 - [React](https://reactjs.org/docs/getting-started.html)
 - [Redux](https://react-redux.js.org/introduction/quick-start)
-- [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) - for end to end testing
+- [React-router-dom](https://reacttraining.com/react-router/web/guides/quick-start)
+- [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell) - end to end testing

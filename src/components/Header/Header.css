@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: aliceblue;
   padding: 10px 20px;
 }
 
@@ -13,10 +13,9 @@
 .homeLink:active {
   text-decoration: none;
   cursor: pointer;
-  color: white;
+  color: aliceblue;
 }
 
-.geoLocaton {
-  display: flex;
-  flex-direction: column;
+.dateInfo {
+  font-size: 0.6em;
 }

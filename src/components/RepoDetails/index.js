@@ -1,1 +1,1 @@
-export { default as RepoDetails } from "./RepoDetails";
+export { default as RepoDetailsContainer } from "./RepoDetailsContainer";

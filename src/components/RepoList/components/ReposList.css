@@ -1,0 +1,44 @@
+.repoListWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.reposList {
+  display: flex;
+  flex-direction: column;
+  border: #282c34 1px solid;
+  border-radius: 0.2em;
+  justify-content: center;
+  max-width: 500px;
+  flex: 2;
+}
+
+.repoLine {
+  text-decoration: none;
+  cursor: pointer;
+  height: 30px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  color: #282c34;
+  background-color: #fff;
+  border-bottom: #282c34 1px solid;
+}
+.repoLine:last-child {
+  border-bottom: transparent;
+}
+
+.repoLine:active,
+.repoLine:visited {
+  background-color: #ebf1ff;
+}
+
+.repoLine:hover {
+  background-color: #282c34;
+  color: #fff;
+}
+
+.noMatch {
+  display: flex;
+  justify-content: center;
+}

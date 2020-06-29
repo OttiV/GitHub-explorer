@@ -6,6 +6,7 @@ export const REPOS_FETCHED = "REPOS_FETCHED";
 export const REPO_FETCHED = "REPO_FETCHED";
 export const REPO_FETCHED_TIME = "REPO_FETCHED_TIME";
 export const REPOS_FETCHED_TIME = "REPOS_FETCHED_TIME";
+export const SET_LOADING = "SET_LOADING";
 
 const getTime = () => {
   return new Date().getTime();
@@ -21,6 +22,11 @@ const reposFetchedTime = time => ({
   payload: time
 });
 
+const setLoading = value => ({
+  type: SET_LOADING,
+  payload: value
+})
+
 export const loadRepos = () => dispatch => {
   const startTime = getTime();
   request(baseUrl)
@@ -32,6 +38,7 @@ export const loadRepos = () => dispatch => {
       const endTime = getTime();
       const time = endTime - startTime;
       dispatch(reposFetchedTime(time));
+      dispatch(setLoading(false));
     })
     .catch(console.error);
 };

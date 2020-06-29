@@ -1,4 +1,4 @@
-export const mockGetReposList = ({ shouldFail = false } = {}) => {
+export const mockGetReposList = () => {
   cy.route(
     "GET",
     "api.github.com/repositories/",
@@ -6,7 +6,7 @@ export const mockGetReposList = ({ shouldFail = false } = {}) => {
   ).as("getReposList");
 };
 
-export const mockGetRepoDetails = ({ shouldFail = false } = {}) => {
+export const mockGetRepoDetails = () => {
   cy.route(
     "GET",
     "https://api.github.com/repositories/",

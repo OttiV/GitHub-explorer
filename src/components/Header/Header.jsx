@@ -13,13 +13,13 @@ const Header = ({ time }) => {
     return `${day}-${month}-${year} ${hour}`;
   };
   const dateInfo = time ? orderTimeAndDate(time) : "";
-
+  const dataCy = time && "dateInfo";
   return (
     <div className="header" data-cy="header">
       <Link to="/" className="homeLink" data-cy="homeLink">
         GitHub Explorer
       </Link>
-      <div className="dateInfo" data-cy="dateInfo">
+      <div className="dateInfo" data-cy={dataCy}>
         <span>{dateInfo}</span>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getRepos } from "../../actions/repos";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
+import { clientId } from "../../constants";
 import { SearchBox } from "./components";
 import "./ReposListContainer.css";
 const ReposList = lazy(() => import("./components/ReposList"));
@@ -49,6 +50,11 @@ class ReposListContainer extends Component {
         ) : (
           <div className="time">Loading...</div>
         )}
+        <a
+          href={`https://github.com/login/oauth/authorize?client_id=${clientId}`}
+        >
+          Sign in with GitHub
+        </a>
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
           <Suspense fallback={<div>Loading...</div>}>

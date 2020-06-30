@@ -1,8 +1,8 @@
-import { REPO_FETCHED } from "../actions/repos";
+import { SET_REPO } from "../actions/repos";
 
 export default (state = [], { type, payload }) => {
   switch (type) {
-    case REPO_FETCHED:
+    case SET_REPO:
       return payload;
 
     default:

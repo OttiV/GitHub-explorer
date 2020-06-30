@@ -1,7 +1,7 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { loadRepos } from "../../actions/repos";
-import { searchRepo } from "../../actions/search";
+import { getRepos } from "../../actions/repos";
+import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
 import { SearchBox } from "./components";
 import "./ReposListContainer.css";
@@ -10,11 +10,11 @@ const Pagination = lazy(() => import("./components/Pagination"));
 
 class ReposListContainer extends Component {
   componentDidMount() {
-    this.props.loadRepos();
+    this.props.getRepos();
   }
 
   handleInput = event => {
-    this.props.searchRepo(event.target.value);
+    this.props.setSearch(event.target.value);
   };
 
   render() {
@@ -75,5 +75,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadRepos, searchRepo, setCurrentPage }
+  { getRepos, setSearch, setCurrentPage }
 )(ReposListContainer);

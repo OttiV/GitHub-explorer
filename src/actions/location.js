@@ -1,27 +1,27 @@
 import request from "superagent";
 
-export const LATITUDE_FETCHED = "LATITUDE_FETCHED";
-export const LONGITUDE_FETCHED = "LONGITUDE_FETCHED";
-export const TIME_FETCHED = "TIME_FETCHED";
+export const SET_LATITUDE = "SET_LATITUDE";
+export const SET_LONGITUDE = "SET_LONGITUDE";
+export const SET_TIME = "SET_TIME";
 
-const latitudeFetched = latitude => ({
-  type: LATITUDE_FETCHED,
+const setLatitude = latitude => ({
+  type: SET_LATITUDE,
   payload: latitude
 });
 
-const longitudeFetched = longitude => ({
-  type: LONGITUDE_FETCHED,
+const setLongitude = longitude => ({
+  type: SET_LONGITUDE,
   payload: longitude
 });
 
 export const getCoordinates = position => dispatch => {
   const { latitude, longitude } = position.coords;
-  dispatch(latitudeFetched(latitude));
-  dispatch(longitudeFetched(longitude));
+  dispatch(setLatitude(latitude));
+  dispatch(setLongitude(longitude));
 };
 
-const timeFetched = time => ({
-  type: TIME_FETCHED,
+const setTime = time => ({
+  type: SET_TIME,
   payload: time
 });
 
@@ -33,7 +33,7 @@ export const getTimeFromCoordinates = (latitude, longitude) => dispatch => {
       if (response.body.message) {
         return alert("Oops " + JSON.stringify(response.body.message));
       }
-      dispatch(timeFetched(response.body.time));
+      dispatch(setTime(response.body.time));
     })
     .catch(console.error);
 };

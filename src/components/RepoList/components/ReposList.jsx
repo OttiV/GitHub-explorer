@@ -3,19 +3,21 @@ import { Link } from "react-router-dom";
 import "./ReposList.css";
 
 const ReposList = ({ repos, loading }) => {
-  if (repos.length === 0 && !loading) {
-    return <div className="noMatch">Sorry, no matches found</div>;
-  }
+  const repoHasLength = repos.length > 0;
+  const repoListClass = repoHasLength ? "reposList" : "";
   return (
-    <div class="repoListWrapper">
-      <div className="reposList" data-cy="reposList">
+    <div className="repoListWrapper">
+      {!repoHasLength && !loading && (
+        <div className="noMatch">Sorry, no matches found</div>
+      )}
+      <div className={repoListClass} data-cy="reposList">
         {repos.map(repo => {
           const { name, id } = repo;
 
           return (
             <Link
               key={repo.id}
-              to={`/${id}`}
+              to={`/repo/${id}`}
               className="repoLine"
               data-cy="repoLine"
             >

@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={ReposList} />
-        <Route path="/:name" component={RepoDetails} />
+        <Route path="/repo/:name" component={RepoDetails} />
       </Switch>
     </div>
   );

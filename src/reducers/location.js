@@ -1,22 +1,18 @@
-import {
-  LATITUDE_FETCHED,
-  LONGITUDE_FETCHED,
-  TIME_FETCHED
-} from "../actions/location";
+import { SET_LATITUDE, SET_LONGITUDE, SET_TIME } from "../actions/location";
 
 export default (state = [], { type, payload }) => {
   switch (type) {
-    case LATITUDE_FETCHED:
+    case SET_LATITUDE:
       return {
         ...state,
         latitude: payload
       };
-    case LONGITUDE_FETCHED:
+    case SET_LONGITUDE:
       return {
         ...state,
         longitude: payload
       };
-    case TIME_FETCHED:
+    case SET_TIME:
       return {
         ...state,
         time: payload

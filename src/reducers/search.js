@@ -1,8 +1,8 @@
-import { SEARCH_REPO } from "../actions/search";
+import { SET_SEARCH } from "../actions/search";
 
 export default (state = "", { type, payload }) => {
   switch (type) {
-    case SEARCH_REPO:
+    case SET_SEARCH:
       return payload;
 
     default:

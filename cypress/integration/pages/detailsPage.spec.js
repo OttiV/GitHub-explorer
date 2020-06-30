@@ -1,4 +1,4 @@
-import { baseUrl } from "../constants";
+import { baseUrl, repoUrl } from "../constants";
 import {
   backButton,
   header,
@@ -10,7 +10,7 @@ import { mockGetRepoDetails } from "../../mock/repos_mocks";
 
 describe("Details page test cases", function() {
   beforeEach(() => {
-    cy.visit(`${baseUrl}1`);
+    cy.visit(`${repoUrl}`);
     cy.server();
     mockGetRepoDetails();
   });

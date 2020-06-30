@@ -26,7 +26,7 @@
 .top {
   display: flex;
   justify-content: space-between;
-  margin: 20px 40px;
+  margin: 20px 40px 0;
 }
 
 .backButton {
@@ -43,7 +43,7 @@
 .backLink:hover,
 .backLink:active {
   text-decoration: none;
-  color: azure;
+  color: #fff;
   text-align: center;
 }
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./RepoDetails.css";
 
 const RepoDetails = ({ repo, time }) => {
+  const timeText = time ? `Time to load: ${time}ms` : "Loading...";
   return (
     <div className="repoDetailsContainer">
       <div className="top">
@@ -12,7 +13,7 @@ const RepoDetails = ({ repo, time }) => {
           </Link>
         </div>
         <div className="timeToLoad" data-cy="timeToLoadRepo">
-          Time to load: {time}ms
+          {timeText}
         </div>
       </div>
       <div className="repoDetailsWrapper" data-cy="repoDetailsWrapper">

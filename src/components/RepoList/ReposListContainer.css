@@ -5,6 +5,13 @@
   justify-content: center;
 }
 
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px;
+}
+
 .time {
   display: flex;
   justify-content: flex-end;

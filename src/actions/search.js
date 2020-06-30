@@ -1,8 +1,8 @@
-export const SEARCH_REPO = "SEARCH_REPO";
+export const SET_SEARCH = "SET_SEARCH";
 
-export const searchRepo = text => dispatch => {
+export const setSearch = text => dispatch => {
   dispatch({
-    type: SEARCH_REPO,
+    type: SET_SEARCH,
     payload: text
   });
 };

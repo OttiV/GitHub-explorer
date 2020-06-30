@@ -7,7 +7,7 @@ const ReposList = ({ repos, loading }) => {
     return <div className="noMatch">Sorry, no matches found</div>;
   }
   return (
-    <div class="repoListWrapper">
+    <div className="repoListWrapper">
       <div className="reposList" data-cy="reposList">
         {repos.map(repo => {
           const { name, id } = repo;
@@ -15,7 +15,7 @@ const ReposList = ({ repos, loading }) => {
           return (
             <Link
               key={repo.id}
-              to={`/${id}`}
+              to={`/repo/${id}`}
               className="repoLine"
               data-cy="repoLine"
             >

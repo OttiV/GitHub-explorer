@@ -1,13 +1,13 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { loadRepo } from "../../actions/repos";
+import { getRepo } from "../../actions/repos";
 const RepoDetails = lazy(() => import("./RepoDetails"));
 
 class RepoDetailsContainer extends Component {
   componentDidMount() {
-    const { match, loadRepo } = this.props;
+    const { match, getRepo } = this.props;
     const id = parseInt(match.params.name);
-    loadRepo(id);
+    getRepo(id);
   }
 
   render() {
@@ -28,5 +28,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadRepo }
+  { getRepo }
 )(RepoDetailsContainer);

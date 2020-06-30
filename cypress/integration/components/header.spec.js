@@ -1,4 +1,4 @@
-import { baseUrl } from "../constants";
+import { baseUrl, repoUrl } from "../constants";
 import { dateInfo, title, header } from "../selectors";
 
 describe("Header test cases", function() {
@@ -11,7 +11,7 @@ describe("Header test cases", function() {
       .contains("GitHub Explorer");
   });
   it("Should send user to homepage when title is clicked", function() {
-    cy.visit(`${baseUrl}1`);
+    cy.visit(`${repoUrl}`);
     cy.get(title).click();
     cy.url(baseUrl);
   });

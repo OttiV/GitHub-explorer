@@ -1,9 +1,10 @@
 import request from "superagent";
 import { clientId, clientSecret } from "../constants";
+
 export const requestToken = code => {
   request
     .post("https://github.com/login/oauth/access_token")
-    .set("Accept", "application/json")
+    .set({ Authorization: "Basic", Accept: "application/json" })
     .send({
       client_id: clientId,
       client_secret: clientSecret,

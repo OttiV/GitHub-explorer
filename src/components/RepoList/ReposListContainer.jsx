@@ -4,6 +4,7 @@ import { fetchRepos } from "../../actions/repos";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
 import { SearchBox } from "./components";
+import { Spinner } from "../Spinner";
 import "./ReposListContainer.css";
 const ReposList = lazy(() => import("./components/ReposList"));
 const Pagination = lazy(() => import("./components/Pagination"));
@@ -48,7 +49,7 @@ class ReposListContainer extends Component {
         </div>
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <ReposList repos={reposToDisplay} loading={loading} />
             <Pagination
               reposPerPage={reposPerPage}

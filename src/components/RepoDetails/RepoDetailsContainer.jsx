@@ -1,6 +1,7 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
 import { fetchRepo, fetchRepoSuccess } from "../../actions/repos";
+import { Spinner } from "../Spinner";
 const RepoDetails = lazy(() => import("./RepoDetails"));
 
 class RepoDetailsContainer extends Component {
@@ -14,7 +15,7 @@ class RepoDetailsContainer extends Component {
     const { repo, resetRepo, time } = this.props;
 
     return (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         <RepoDetails repo={repo} resetRepo={resetRepo} time={time} />
       </Suspense>
     );

@@ -3,15 +3,26 @@
   margin-top: 20px;
   justify-content: center;
 }
+.buttonWrapper {
+  display: flex;
+  border-radius: 0.2em;
+  border: 1px solid;
+}
 
 .button {
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
   padding: 0 5px;
-  margin: 0 0.2px;
-  border: solid 1px #282c34;
-  border-radius: 0.2em;
+  width: 10px;
+  cursor: pointer;
+  border-right: solid 1px #282c34;
   background-color: #fff;
 }
+
+.button:last-child {
+  border-right: transparent;
+}
+
 .button:hover {
   background-color: #282c34;
   color: #fff;

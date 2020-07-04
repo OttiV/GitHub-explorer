@@ -8,16 +8,18 @@ const Pagination = ({ reposPerPage, totalRepos, paginate }) => {
   }
   return (
     <div className="pagination" data-cy="pagination">
-      {pageNumbers.map(number => (
-        <div
-          key={number}
-          className="button"
-          data-cy="paginationButton"
-          onClick={() => paginate(number)}
-        >
-          {number}
-        </div>
-      ))}
+      <div className="buttonWrapper">
+        {pageNumbers.map(number => (
+          <div
+            key={number}
+            className="button"
+            data-cy="paginationButton"
+            onClick={() => paginate(number)}
+          >
+            {number}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { fetchRepos } from "../../actions/repos";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
 import { SearchBox } from "./components";
+import { Spinner } from "../Spinner";
 import "./ReposListContainer.css";
 const ReposList = lazy(() => import("./components/ReposList"));
 const Pagination = lazy(() => import("./components/Pagination"));
@@ -40,15 +41,15 @@ class ReposListContainer extends Component {
       indexOfFirstRepo,
       indexOfLastRepo
     );
-    const timeText = time ? `Time to load: ${time}ms` : "Loading...";
+    const timeText = time ? `${time}ms` : <Spinner small={true} />;
     return (
       <div className="container" data-cy="timeToLoadList">
         <div className="topContainer">
-          <div className="time">{timeText}</div>
+          <div className="time">Time to load: {timeText}</div>
         </div>
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <ReposList repos={reposToDisplay} loading={loading} />
             <Pagination
               reposPerPage={reposPerPage}

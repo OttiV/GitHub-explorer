@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./RepoDetails.css";
+import { Spinner } from "../Spinner";
 
 const RepoDetails = ({ repo, resetRepo, time }) => {
-  const timeText = time ? `Time to load: ${time}ms` : "Loading...";
+  const timeText = time ? `${time}ms` : <Spinner small={true} />;
   return (
     <div className="repoDetailsContainer">
       <div className="top">
@@ -18,7 +19,7 @@ const RepoDetails = ({ repo, resetRepo, time }) => {
           </Link>
         </div>
         <div className="timeToLoad" data-cy="timeToLoadRepo">
-          {timeText}
+          Time to load: {timeText}
         </div>
       </div>
       <div className="repoDetailsWrapper" data-cy="repoDetailsWrapper">

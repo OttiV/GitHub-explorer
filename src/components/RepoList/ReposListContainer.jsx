@@ -41,14 +41,14 @@ class ReposListContainer extends Component {
       indexOfFirstRepo,
       indexOfLastRepo
     );
-    // const href = `https://github.com/login/oauth/authorize?client_id=${clientId}`;
+    const href = `https://github.com/login/oauth/authorize?client_id=${clientId}`;
     const timeText = time ? `Time to load: ${time}ms` : "Loading...";
     return (
       <div className="container" data-cy="timeToLoadList">
         <div className="topContainer">
-          {/* <a className="gitHubRedirect" href={href}>
+          <a className="gitHubRedirect" href={href}>
             Sign in with GitHub
-          </a> */}
+          </a>
           <div className="time">{timeText}</div>
         </div>
         <div className="wrapper">

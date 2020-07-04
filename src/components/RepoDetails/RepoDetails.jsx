@@ -2,13 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./RepoDetails.css";
 
-const RepoDetails = ({ repo, time }) => {
+const RepoDetails = ({ repo, resetRepo, time }) => {
   const timeText = time ? `Time to load: ${time}ms` : "Loading...";
   return (
     <div className="repoDetailsContainer">
       <div className="top">
         <div className="backButton">
-          <Link to="/" className="backLink" data-cy="backButton">
+          <Link
+            to="/"
+            className="backLink"
+            data-cy="backButton"
+            onClick={() => resetRepo([])}
+          >
             Back
           </Link>
         </div>

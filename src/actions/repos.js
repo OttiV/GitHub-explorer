@@ -20,7 +20,6 @@ const setReposTimeToLoad = time => ({
   payload: time
 });
 
-
 const fetchReposRequest = () => {
   return {
     type: FETCH_REPOS_REQUEST
@@ -69,7 +68,7 @@ const fetchRepoRequest = () => {
   };
 };
 
-const fetchRepoSuccess = repo => {
+export const fetchRepoSuccess = repo => {
   return {
     type: FETCH_REPO_SUCCESS,
     payload: repo

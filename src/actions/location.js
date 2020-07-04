@@ -1,39 +1,55 @@
 import request from "superagent";
 
-export const SET_LATITUDE = "SET_LATITUDE";
-export const SET_LONGITUDE = "SET_LONGITUDE";
-export const SET_TIME = "SET_TIME";
+export const FETCH_LATITUDE = "FETCH_LATITUDE";
+export const FETCH_LONGITUDE = "FETCH_LONGITUDE";
+export const FETCH_TIME = "FETCH_TIME";
 
-const setLatitude = latitude => ({
-  type: SET_LATITUDE,
+const fetchLatitude = latitude => ({
+  type: FETCH_LATITUDE,
   payload: latitude
 });
 
-const setLongitude = longitude => ({
-  type: SET_LONGITUDE,
+const fetchLongitude = longitude => ({
+  type: FETCH_LONGITUDE,
   payload: longitude
 });
 
-export const getCoordinates = position => dispatch => {
-  const { latitude, longitude } = position.coords;
-  dispatch(setLatitude(latitude));
-  dispatch(setLongitude(longitude));
+export const getCoords = () => {
+  return function(dispatch) {
+    function success(position) {
+      const { latitude, longitude } = position.coords;
+      dispatch(fetchLatitude(latitude));
+      dispatch(fetchLongitude(longitude));
+    }
+    function failure(error) {
+      console.warn(`ERROR(${error.code}): ${error.message}`);
+    }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, failure);
+    } else {
+      alert("Geolocation is not supported by this browser");
+    }
+  };
 };
 
-const setTime = time => ({
-  type: SET_TIME,
+const fetchUserLocalTime = time => ({
+  type: FETCH_TIME,
   payload: time
 });
 
-export const getTimeFromCoordinates = (latitude, longitude) => dispatch => {
-  request(
-    `http://api.geonames.org/timezoneJSON?lat=${latitude}&lng=${longitude}&username=ovignani`
-  )
-    .then(response => {
-      if (response.body.message) {
-        return alert("Oops " + JSON.stringify(response.body.message));
-      }
-      dispatch(setTime(response.body.time));
-    })
-    .catch(console.error);
+export const getTimeFromCoords = (latitude, longitude) => {
+  return function(dispatch) {
+    request(
+      `http://api.geonames.org/timezoneJSON?lat=${latitude}&lng=${longitude}&username=ovignani`
+    )
+      .then(response => {
+        if (response.body.message) {
+          return alert("Oops " + JSON.stringify(response.body.message));
+        }
+        dispatch(fetchUserLocalTime(response.body.time));
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  };
 };

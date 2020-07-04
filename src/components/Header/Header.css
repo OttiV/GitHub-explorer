@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: calc(10px + 2vmin);
-  color: aliceblue;
+  color: #f0f8ff;
   padding: 10px 20px;
 }
 
@@ -13,7 +13,7 @@
 .homeLink:active {
   text-decoration: none;
   cursor: pointer;
-  color: aliceblue;
+  color: #f0f8ff;
 }
 
 .dateInfo {

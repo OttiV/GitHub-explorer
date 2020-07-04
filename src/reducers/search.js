@@ -1,9 +1,16 @@
 import { SET_SEARCH } from "../actions/search";
 
-export default (state = "", { type, payload }) => {
+const initialState = {
+  value: ""
+};
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_SEARCH:
-      return payload;
+      return {
+        ...state,
+        value: payload
+      };
 
     default:
       return state;

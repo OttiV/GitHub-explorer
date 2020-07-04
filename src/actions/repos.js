@@ -2,71 +2,101 @@ import request from "superagent";
 
 const baseUrl = "https://api.github.com/repositories";
 
-export const SET_REPOS = "SET_REPOS";
-export const SET_REPO = "SET_REPO";
+export const FETCH_REPOS_REQUEST = "FETCH_REPOS_REQUEST";
+export const FETCH_REPOS_SUCCESS = "FETCH_REPOS_SUCCESS";
+export const FETCH_REPOS_FAILURE = "FETCH_REPOS_FAILURE";
 export const SET_REPO_TIME = "SET_REPO_TIME";
+export const FETCH_REPO_REQUEST = "FETCH_REPO_REQUEST";
+export const FETCH_REPO_SUCCESS = "FETCH_REPO_SUCCESS";
+export const FETCH_REPO_FAILURE = "FETCH_REPO_FAILURE";
 export const SET_REPOS_TIME = "SET_REPOS_TIME";
-export const SET_LOADING = "SET_LOADING";
 
 const getTime = () => {
   return new Date().getTime();
 };
 
-const setRepos = repos => ({
-  type: SET_REPOS,
-  payload: repos
-});
-
-const setReposTime = time => ({
+const setReposTimeToLoad = time => ({
   type: SET_REPOS_TIME,
   payload: time
 });
 
-const setLoading = value => ({
-  type: SET_LOADING,
-  payload: value
-});
 
-export const getRepos = () => dispatch => {
-  const startTime = getTime();
-  request(baseUrl)
-    .set("Accept", "application/vnd.github.v3+json")
-    .then(response => {
-      if (response.body.message) {
-        return alert("Oops " + JSON.stringify(response.body.message));
-      }
-      dispatch(setRepos(response.body));
-      const endTime = getTime();
-      const time = endTime - startTime;
-      dispatch(setReposTime(time));
-      dispatch(setLoading(false));
-    })
-    .catch(console.error);
+const fetchReposRequest = () => {
+  return {
+    type: FETCH_REPOS_REQUEST
+  };
 };
 
-export const setRepo = repo => ({
-  type: SET_REPO,
-  payload: repo
-});
+const fetchReposSuccess = repos => {
+  return {
+    type: FETCH_REPOS_SUCCESS,
+    payload: repos
+  };
+};
 
-const rsetRepoTime = time => ({
+const fetchReposFailure = error => {
+  return {
+    type: FETCH_REPOS_FAILURE,
+    payload: error
+  };
+};
+
+export const fetchRepos = () => {
+  return function(dispatch) {
+    dispatch(fetchReposRequest());
+    const startTime = getTime();
+    request(baseUrl)
+      .then(response => {
+        dispatch(fetchReposSuccess(response.body));
+        const endTime = getTime();
+        const time = endTime - startTime;
+        dispatch(setReposTimeToLoad(time));
+      })
+      .catch(error => {
+        dispatch(fetchReposFailure(error.message));
+      });
+  };
+};
+
+const setRepoTimeToLoad = time => ({
   type: SET_REPO_TIME,
   payload: time
 });
 
-export const getRepo = id => dispatch => {
-  const startTime = getTime();
-  request(baseUrl)
-    .set("Accept", "application/vnd.github.v3+json")
-    .then(response => {
-      if (response.body.message) {
-        return alert("Oops " + JSON.stringify(response.body.message));
-      }
-      const filteredResponse = response.body.filter(repo => repo.id === id);
-      dispatch(setRepo(filteredResponse));
-      const endTime = getTime();
-      const time = endTime - startTime;
-      dispatch(rsetRepoTime(time));
-    })
-    .catch(console.error);
+const fetchRepoRequest = () => {
+  return {
+    type: FETCH_REPO_REQUEST
+  };
+};
+
+const fetchRepoSuccess = repo => {
+  return {
+    type: FETCH_REPO_SUCCESS,
+    payload: repo
+  };
+};
+
+const fetchRepoFailure = error => {
+  return {
+    type: FETCH_REPO_FAILURE,
+    payload: error
+  };
+};
+
+export const fetchRepo = id => {
+  return function(dispatch) {
+    dispatch(fetchRepoRequest());
+    const startTime = getTime();
+    request(baseUrl)
+      .then(response => {
+        const filteredResponse = response.body.filter(repo => repo.id === id);
+        dispatch(fetchRepoSuccess(filteredResponse));
+        const endTime = getTime();
+        const time = endTime - startTime;
+        dispatch(setRepoTimeToLoad(time));
+      })
+      .catch(error => {
+        dispatch(fetchRepoFailure(error.message));
+      });
+  };
 };

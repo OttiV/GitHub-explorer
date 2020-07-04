@@ -7,7 +7,7 @@
 
 .topContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin: 20px 40px;
 }
@@ -15,18 +15,4 @@
 .time {
   display: flex;
   font-size: 0.8em;
-}
-
-.gitHubRedirect,
-.gitHubRedirect:active {
-  text-decoration: none;
-  border-radius: 0.2em;
-  background-color: #282c34;
-  color: #fff;
-  height: 30px;
-  width: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }

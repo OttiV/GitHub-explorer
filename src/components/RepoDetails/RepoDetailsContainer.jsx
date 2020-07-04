@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { fetchRepo } from "../../actions/repos";
+import { fetchRepo, fetchRepoSuccess } from "../../actions/repos";
 const RepoDetails = lazy(() => import("./RepoDetails"));
 
 class RepoDetailsContainer extends Component {
@@ -11,11 +11,11 @@ class RepoDetailsContainer extends Component {
   }
 
   render() {
-    const { repo, time } = this.props;
+    const { repo, resetRepo, time } = this.props;
 
     return (
       <Suspense fallback={<div>Loading...</div>}>
-        <RepoDetails repo={repo} time={time} />
+        <RepoDetails repo={repo} resetRepo={resetRepo} time={time} />
       </Suspense>
     );
   }
@@ -27,7 +27,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRepo: id => dispatch(fetchRepo(id))
+    fetchRepo: id => dispatch(fetchRepo(id)),
+    resetRepo: value => dispatch(fetchRepoSuccess(value))
   };
 };
 

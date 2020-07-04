@@ -1,7 +1,12 @@
 import React from "react";
 import "./Pagination.css";
 
-const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
+const Pagination = ({
+  currentPage,
+  elementsPerPage,
+  paginate,
+  totalElements
+}) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalElements / elementsPerPage); i++) {
     pageNumbers.push(i);
@@ -12,7 +17,7 @@ const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
         {pageNumbers.map(number => (
           <div
             key={number}
-            className="button"
+            className={`button ${currentPage === number && "currentPage"}`}
             data-cy="paginationButton"
             onClick={() => paginate(number)}
           >

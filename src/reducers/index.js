@@ -7,6 +7,9 @@ import search from "./search";
 import time from "./time";
 import user from "./user";
 import users from "./users";
+import userFollowers from "./userFollowers";
+import userFollowing from "./userFollowing";
+import userRepos from "./userRepos";
 
 export default combineReducers({
   location,
@@ -16,5 +19,8 @@ export default combineReducers({
   search,
   time,
   user,
-  users
+  users,
+  userFollowers,
+  userFollowing,
+  userRepos
 });

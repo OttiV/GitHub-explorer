@@ -48,13 +48,18 @@ class ReposListContainer extends Component {
           <div className="time">Time to load: {timeText}</div>
         </div>
         <div className="wrapper">
-          <SearchBox search={search} handleInput={this.handleInput} />
+          <SearchBox
+            handleInput={this.handleInput}
+            placeholder="Enter repo title here..."
+            search={search}
+          />
           <Suspense fallback={<Spinner />}>
             <ReposList repos={reposToDisplay} loading={loading} />
             <Pagination
+              currentPage={currentPage}
               elementsPerPage={reposPerPage}
-              totalElements={totalRepos}
               paginate={paginate}
+              totalElements={totalRepos}
             />
           </Suspense>
         </div>

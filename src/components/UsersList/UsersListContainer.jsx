@@ -42,20 +42,25 @@ class UsersListContainer extends Component {
       indexOfLastUser
     );
     const timeText = time ? `${time}ms` : <Spinner small={true} />;
- 
+
     return (
       <div className="container" data-cy="timeToLoadList">
         <div className="topContainer">
           <div className="time">Time to load: {timeText}</div>
         </div>
         <div className="wrapper">
-          <SearchBox search={search} handleInput={this.handleInput} />
+          <SearchBox
+            handleInput={this.handleInput}
+            placeholder="Enter user name here..."
+            search={search}
+          />
           <Suspense fallback={<Spinner />}>
             <UsersList users={usersToDisplay} loading={loading} />
             <Pagination
+              currentPage={currentPage}
               elementsPerPage={usersPerPage}
-              totalElements={totalUsers}
               paginate={paginate}
+              totalElements={totalUsers}
             />
           </Suspense>
         </div>

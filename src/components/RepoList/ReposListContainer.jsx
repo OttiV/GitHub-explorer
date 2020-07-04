@@ -44,9 +44,7 @@ class ReposListContainer extends Component {
     const timeText = time ? `${time}ms` : <Spinner small={true} />;
     return (
       <div className="container" data-cy="timeToLoadList">
-        <div className="topContainer">
-          <div className="time">Time to load: {timeText}</div>
-        </div>
+        <div className="time">Time to load: {timeText}</div>
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
           <Suspense fallback={<Spinner />}>
@@ -55,6 +53,7 @@ class ReposListContainer extends Component {
               reposPerPage={reposPerPage}
               totalRepos={totalRepos}
               paginate={paginate}
+              currentPage={currentPage}
             />
           </Suspense>
         </div>

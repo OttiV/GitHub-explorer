@@ -5,14 +5,10 @@
   justify-content: center;
 }
 
-.topContainer {
+.time {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin: 20px 40px;
-}
-
-.time {
-  display: flex;
   font-size: 0.8em;
 }

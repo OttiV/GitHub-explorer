@@ -1,17 +1,17 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { fetchRepos } from "../../actions/repos";
+import { fetchUsers } from "../../actions/users";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
 import { SearchBox } from "../SearchBox";
 import { Spinner } from "../Spinner";
-import "./ReposListContainer.css";
-const ReposList = lazy(() => import("./components/ReposList"));
+import "./UsersListContainer.css";
+const UsersList = lazy(() => import("./components/UsersList"));
 const Pagination = lazy(() => import("../Pagination/Pagination"));
 
-class ReposListContainer extends Component {
+class UsersListContainer extends Component {
   componentDidMount() {
-    this.props.fetchRepos();
+    this.props.fetchUsers();
   }
 
   handleInput = event => {
@@ -20,7 +20,7 @@ class ReposListContainer extends Component {
 
   render() {
     const {
-      repos,
+      users,
       search,
       time,
       setCurrentPage,
@@ -28,20 +28,21 @@ class ReposListContainer extends Component {
       loading
     } = this.props;
     const currentPage = pagination;
-    const reposPerPage = 10;
-    const indexOfLastRepo = currentPage * reposPerPage;
-    const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
-    const filteredRepos = repos.filter(repo =>
-      repo.name.toLowerCase().includes(search.toLowerCase())
+    const usersPerPage = 10;
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const filteredUsers = users.filter(user =>
+      user.login.toLowerCase().includes(search.toLowerCase())
     );
     const paginate = pageNumber => setCurrentPage(pageNumber);
-    const currentRepos = search ? filteredRepos : repos;
-    const totalRepos = currentRepos.length;
-    const reposToDisplay = currentRepos.slice(
-      indexOfFirstRepo,
-      indexOfLastRepo
+    const currentUsers = search ? filteredUsers : users;
+    const totalUsers = currentUsers.length;
+    const usersToDisplay = currentUsers.slice(
+      indexOfFirstUser,
+      indexOfLastUser
     );
     const timeText = time ? `${time}ms` : <Spinner small={true} />;
+ 
     return (
       <div className="container" data-cy="timeToLoadList">
         <div className="topContainer">
@@ -50,10 +51,10 @@ class ReposListContainer extends Component {
         <div className="wrapper">
           <SearchBox search={search} handleInput={this.handleInput} />
           <Suspense fallback={<Spinner />}>
-            <ReposList repos={reposToDisplay} loading={loading} />
+            <UsersList users={usersToDisplay} loading={loading} />
             <Pagination
-              elementsPerPage={reposPerPage}
-              totalElements={totalRepos}
+              elementsPerPage={usersPerPage}
+              totalElements={totalUsers}
               paginate={paginate}
             />
           </Suspense>
@@ -65,14 +66,14 @@ class ReposListContainer extends Component {
 
 const mapStateToProps = state => ({
   pagination: state.pagination,
-  repos: state.repos.value,
-  loading: state.repos.loading,
+  users: state.users.value,
+  loading: state.users.loading,
   search: state.search.value,
   time: state.time
 });
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRepos: () => dispatch(fetchRepos()),
+    fetchUsers: () => dispatch(fetchUsers()),
     setSearch: value => dispatch(setSearch(value)),
     setCurrentPage: number => dispatch(setCurrentPage(number))
   };
@@ -81,4 +82,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ReposListContainer);
+)(UsersListContainer);

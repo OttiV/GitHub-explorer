@@ -16,8 +16,8 @@ const ReposList = ({ repos, loading }) => {
 
           return (
             <Link
-              key={repo.id}
-              to={`/repo/${id}`}
+              key={id}
+              to={`/repos/${name}`}
               className="repoLine"
               data-cy="repoLine"
             >

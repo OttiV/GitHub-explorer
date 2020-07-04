@@ -1,0 +1,44 @@
+.userListWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.usersList {
+  display: flex;
+  flex-direction: column;
+  border: #282c34 1px solid;
+  border-radius: 0.2em;
+  justify-content: center;
+  max-width: 500px;
+  flex: 2;
+}
+
+.userLine {
+  text-decoration: none;
+  cursor: pointer;
+  height: 30px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  color: #282c34;
+  background-color: #fff;
+  border-bottom: #282c34 1px solid;
+}
+.userLine:last-child {
+  border-bottom: transparent;
+}
+
+.userLine:active,
+.userLine:visited {
+  background-color: #ebf1ff;
+}
+
+.userLine:hover {
+  background-color: #282c34;
+  color: #fff;
+}
+
+.noMatch {
+  display: flex;
+  justify-content: center;
+}

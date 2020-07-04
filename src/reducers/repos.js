@@ -1,13 +1,36 @@
-import { SET_REPOS } from "../actions/repos";
+import {
+  FETCH_REPOS_REQUEST,
+  FETCH_REPOS_SUCCESS,
+  FETCH_REPOS_FAILURE
+} from "../actions/repos";
 
-export default (state = [], { type, payload }) => {
+const initialState = {
+  loading: false,
+  value: [],
+  error: ""
+};
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_REPOS:
-      return payload.reduce((repos, repo) => {
-        repos[repo.id] = repo;
-        return repos;
-      }, {});
-
+    case FETCH_REPOS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_REPOS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        value: payload,
+        error: ""
+      };
+    case FETCH_REPOS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        value: [],
+        error: payload
+      };
     default:
       return state;
   }

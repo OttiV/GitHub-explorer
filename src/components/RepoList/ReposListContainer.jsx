@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { getRepos } from "../../actions/repos";
+import { fetchRepos } from "../../actions/repos";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
 import { clientId } from "../../constants";
@@ -11,7 +11,7 @@ const Pagination = lazy(() => import("./components/Pagination"));
 
 class ReposListContainer extends Component {
   componentDidMount() {
-    this.props.getRepos();
+    this.props.fetchRepos();
   }
 
   handleInput = event => {
@@ -34,7 +34,6 @@ class ReposListContainer extends Component {
     const filteredRepos = repos.filter(repo =>
       repo.name.toLowerCase().includes(search.toLowerCase())
     );
-
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const currentRepos = search ? filteredRepos : repos;
     const totalRepos = currentRepos.length;
@@ -42,14 +41,14 @@ class ReposListContainer extends Component {
       indexOfFirstRepo,
       indexOfLastRepo
     );
-    const href = `https://github.com/login/oauth/authorize?client_id=${clientId}`;
+    // const href = `https://github.com/login/oauth/authorize?client_id=${clientId}`;
     const timeText = time ? `Time to load: ${time}ms` : "Loading...";
     return (
       <div className="container" data-cy="timeToLoadList">
         <div className="topContainer">
-          <a className="gitHubRedirect" href={href}>
+          {/* <a className="gitHubRedirect" href={href}>
             Sign in with GitHub
-          </a>
+          </a> */}
           <div className="time">{timeText}</div>
         </div>
         <div className="wrapper">
@@ -69,14 +68,21 @@ class ReposListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.loading,
   pagination: state.pagination,
-  repos: state.repos === null ? null : Object.values(state.repos),
-  search: state.search,
+  repos: state.repos.value,
+  loading: state.repos.loading,
+  search: state.search.value,
   time: state.time
 });
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchRepos: () => dispatch(fetchRepos()),
+    setSearch: value => dispatch(setSearch(value)),
+    setCurrentPage: number => dispatch(setCurrentPage(number))
+  };
+};
 
 export default connect(
   mapStateToProps,
-  { getRepos, setSearch, setCurrentPage }
+  mapDispatchToProps
 )(ReposListContainer);

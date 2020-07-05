@@ -1,9 +1,14 @@
 import React from "react";
 import "./Pagination.css";
 
-const Pagination = ({ reposPerPage, totalRepos, paginate, currentPage }) => {
+const Pagination = ({
+  currentPage,
+  elementsPerPage,
+  paginate,
+  totalElements
+}) => {
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalRepos / reposPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalElements / elementsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (

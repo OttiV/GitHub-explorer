@@ -1,16 +1,11 @@
-.loginContainer {
-  flex-direction: column;
+.backLinkContainer {
   display: flex;
-  margin-top: 30px;
+  justify-content: space-between;
+  margin: 20px 40px;
   align-items: center;
 }
 
-.loginText {
-  padding-bottom: 10px;
-}
-
 .backButton {
-  margin: 20px 40px;
   background-color: #282c34;
   width: 80px;
   height: 30px;
@@ -26,4 +21,8 @@
   text-decoration: none;
   color: #fff;
   text-align: center;
+}
+
+.timeToLoad {
+  font-size: 0.8em;
 }

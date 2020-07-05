@@ -1,2 +1,2 @@
-export const baseUrl = "http://localhost:3000/";
-export const repoUrl = "http://localhost:3000/repo/1";
+export const baseUrl = "http://localhost:3000/repos/";
+export const repoUrl = "http://localhost:3000/repos/grit";

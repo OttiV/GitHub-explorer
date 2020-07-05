@@ -11,7 +11,7 @@ const Header = ({ time }) => {
         <Link to="/" className="homeLink" data-cy="homeLink">
           GitHub Explorer
         </Link>
-        <div className="burgerMenu"></div>
+        {/* <div className="burgerMenu"></div> */}
       </div>
       <div className="dateInfo">
         {time ? (

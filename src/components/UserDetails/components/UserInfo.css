@@ -19,19 +19,18 @@
   text-decoration: none;
 }
 
-.userInfoLine:nth-child(odd) {
-  background: aliceblue;
-  color: #282c34;
-}
-
 .userInfoLine:last-child {
   border-bottom: transparent;
 }
 
-.userInfoLine:hover,
-.userInfoLine:nth-child(odd):hover {
+.userInfoLine:hover {
   background-color: #282c34;
   color: #fff;
+}
+
+.userInfoLine:active,
+.userInfoLine:visited {
+  background-color: #ebf1ff;
 }
 
 .avatars {

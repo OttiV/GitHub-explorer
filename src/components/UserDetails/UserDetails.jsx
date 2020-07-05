@@ -45,9 +45,9 @@ const UserDetails = ({ user, resetUser, time }) => {
                 />
                 <span className="name">{login.toUpperCase()}</span>
               </div>
-              <UserInfo url={repos_url} detail="repos" />
-              <UserInfo url={followingUrl} detail="following" />
-              <UserInfo url={followers_url} detail="followers" />
+              <UserInfo url={repos_url} category="repos" />
+              <UserInfo url={followingUrl} category="following" />
+              <UserInfo url={followers_url} category="followers" />
             </div>
           );
         })}

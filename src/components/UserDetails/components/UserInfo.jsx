@@ -12,41 +12,41 @@ class UserInfo extends Component {
       fetchFollowing,
       fetchRepos,
       url,
-      detail
+      category
     } = this.props;
-    if (detail === "followers") {
+    if (category === "followers") {
       fetchFollowers(url);
     }
-    if (detail === "repos") {
+    if (category === "repos") {
       fetchRepos(url);
     }
-    if (detail === "following") {
+    if (category === "following") {
       fetchFollowing(url);
     }
   }
 
   render() {
-    const { userFollowers, userRepos, userFollowing, detail } = this.props;
-    const getElements = detail => {
-      if (detail === "followers") {
+    const { userFollowers, userRepos, userFollowing, category } = this.props;
+    const getElements = category => {
+      if (category === "followers") {
         return userFollowers;
       }
-      if (detail === "following") {
+      if (category === "following") {
         return userFollowing;
       }
-      if (detail === "repos") {
+      if (category === "repos") {
         return userRepos;
       }
     };
-    const elements = getElements(detail);
+    const elements = getElements(category);
     const numOfElements = elements.length > 0 ? elements.length : "No";
     return (
       <div>
-        {numOfElements} {detail} found:
+        {numOfElements} {category} found:
         <div className="userInfosWrapper">
           {elements.map(element => {
             const { id, html_url, name, login, avatar_url } = element;
-            const isNotRepo = detail !== "repos";
+            const isNotRepo = category !== "repos";
             const title = isNotRepo ? login : name;
             return (
               <a

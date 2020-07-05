@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../actions/users";
+import { fetchUsers } from "../../actions/usersActions";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
 import { SearchBox } from "../SearchBox";

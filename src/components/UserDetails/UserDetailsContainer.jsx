@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { fetchUser, fetchUserSuccess } from "../../actions/users";
+import { fetchUser, fetchUserSuccess } from "../../actions/usersActions";
 import { Spinner } from "../Spinner";
 const UserDetails = lazy(() => import("./UserDetails"));
 

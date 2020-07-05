@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUserFollowers } from "../../../actions/userFollowers";
-import { fetchUserFollowing } from "../../../actions/userFollowing";
-import { fetchUserRepos } from "../../../actions/userRepos";
+import {
+  fetchFollowers,
+  fetchFollowing,
+  fetchUserRepos
+} from "../../../actions/usersActions";
 import "./UserInfo.css";
 
 class UserInfo extends Component {
@@ -74,14 +76,14 @@ class UserInfo extends Component {
 }
 
 const mapStateToProps = state => ({
-  userFollowers: state.userFollowers.value,
-  userFollowing: state.userFollowing.value,
-  userRepos: state.userRepos.value
+  userFollowers: state.user.followers.value,
+  userFollowing: state.user.following.value,
+  userRepos: state.user.repos.value
 });
 const mapDispatchToProps = dispatch => {
   return {
-    fetchFollowers: url => dispatch(fetchUserFollowers(url)),
-    fetchFollowing: url => dispatch(fetchUserFollowing(url)),
+    fetchFollowers: url => dispatch(fetchFollowers(url)),
+    fetchFollowing: url => dispatch(fetchFollowing(url)),
     fetchRepos: url => dispatch(fetchUserRepos(url))
   };
 };

@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0 40px;
+  max-height: 120px;
 }
 
 .repoDetails {
@@ -36,6 +37,7 @@
   font-size: 20px;
   margin-bottom: 20px;
 }
+
 .nameAndAvatar {
   display: flex;
   align-items: center;

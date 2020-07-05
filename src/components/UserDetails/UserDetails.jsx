@@ -27,14 +27,14 @@ const UserDetails = ({ user, resetUser, time }) => {
           const followingUrl = following_url.split("{")[0];
           return (
             <div key={id} className="userDetails" data-cy={`userDetails-${id}`}>
-              <div className="info" data-cy="userName">
+              <div className="info">
                 <img
                   src={avatar_url}
                   alt={`${login} avatar`}
                   className="avatar"
                   data-cy="userAvatar"
                 />
-                <span className="name">{login.toUpperCase()}</span>
+                <span  data-cy="userName" className="name">{login.toUpperCase()}</span>
               </div>
               <UserInfo url={repos_url} category="repos" />
               <UserInfo url={followingUrl} category="following" />

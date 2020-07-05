@@ -9,16 +9,38 @@
   border: solid 0.5px;
   border-radius: 0.4em;
   background-color: #fff;
+  padding: 20px;
 }
 
 .avatar {
-  max-width: 180px;
-  max-height: 180px;
+  max-width: 50px;
   border-radius: 50%;
-  margin: 20px;
 }
 
 .info {
-  margin: 20px;
+  margin: 20px 0;
   width: 400px;
+}
+
+.repoLink {
+  color: black;
+  margin-inline-start: 5px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  width: 450px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.nameAndAvatar {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin-left: 10px;
 }

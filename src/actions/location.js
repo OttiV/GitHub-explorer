@@ -46,7 +46,7 @@ export const getTimeFromCoords = (latitude, longitude) => {
         dispatch(fetchUserLocalTime(response.body.time));
       })
       .catch(error => {
-        alert(error.message);
+        console.log(error.message);
       });
   };
 };

@@ -5,6 +5,7 @@ import {
   fetchFollowing,
   fetchUserRepos
 } from "../../../actions/usersActions";
+import { Spinner } from "../../Spinner";
 import "./UserInfo.css";
 
 class UserInfo extends Component {
@@ -28,25 +29,28 @@ class UserInfo extends Component {
   }
 
   render() {
-    const { userFollowers, userRepos, userFollowing, category } = this.props;
+    const { followers, repos, following, category } = this.props;
     const getElements = category => {
       if (category === "followers") {
-        return userFollowers;
+        return followers;
       }
       if (category === "following") {
-        return userFollowing;
+        return following;
       }
       if (category === "repos") {
-        return userRepos;
+        return repos;
       }
     };
     const elements = getElements(category);
-    const numOfElements = elements.length > 0 ? elements.length : "No";
+    const { value, loading } = elements;
+    console.log(value);
+    const numOfElements = value.length > 1 ? value.length : "No";
     return (
       <div>
         {numOfElements} {category} found:
         <div className="userInfosWrapper">
-          {elements.map(element => {
+          {loading && <Spinner />}
+          {value.map(element => {
             const { id, html_url, name, login, avatar_url } = element;
             const isNotRepo = category !== "repos";
             const title = isNotRepo ? login : name;
@@ -76,9 +80,9 @@ class UserInfo extends Component {
 }
 
 const mapStateToProps = state => ({
-  userFollowers: state.user.followers.value,
-  userFollowing: state.user.following.value,
-  userRepos: state.user.repos.value
+  followers: state.user.followers,
+  following: state.user.following,
+  repos: state.user.repos
 });
 const mapDispatchToProps = dispatch => {
   return {

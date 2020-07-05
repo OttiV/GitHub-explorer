@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchUsers } from "../../actions/usersActions";
 import { setSearch } from "../../actions/search";
 import { setCurrentPage } from "../../actions/pagination";
+import { BackLinkAndTime } from "../BackLinkAndTime";
 import { SearchBox } from "../SearchBox";
 import { Spinner } from "../Spinner";
 import "./UsersListContainer.css";
@@ -41,13 +42,10 @@ class UsersListContainer extends Component {
       indexOfFirstUser,
       indexOfLastUser
     );
-    const timeText = time ? `${time}ms` : <Spinner small={true} />;
 
     return (
       <div className="container" data-cy="timeToLoadList">
-        <div className="topContainer">
-          <div className="time">Time to load: {timeText}</div>
-        </div>
+        <BackLinkAndTime time={time} />
         <div className="wrapper">
           <SearchBox
             handleInput={this.handleInput}

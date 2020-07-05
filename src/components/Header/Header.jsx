@@ -17,7 +17,7 @@ const Header = ({ time }) => {
         {time ? (
           <span data-cy="dateInfo">{orderTimeAndDate(time)}</span>
         ) : (
-          <Spinner small={true} light={true} />
+          <Spinner size="small" theme="light" />
         )}
       </div>
     </div>

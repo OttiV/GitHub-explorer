@@ -1,5 +1,6 @@
 import React from "react";
 import { BackLinkAndTime } from "../BackLinkAndTime";
+import { UserInfo } from "../UserDetails/components";
 import "./RepoDetails.css";
 
 const RepoDetails = ({ repo, resetRepo, time }) => (
@@ -13,38 +14,46 @@ const RepoDetails = ({ repo, resetRepo, time }) => (
     />
     <div className="repoDetailsWrapper" data-cy="repoDetailsWrapper">
       {repo.map(rep => {
-        const { id, owner, name, description, fork, html_url } = rep;
-        const { login, avatar_url } = owner;
+        const { id, owner, name, description, html_url } = rep;
+        const {
+          login,
+          avatar_url,
+          repos_url,
+          following_url,
+          followers_url
+        } = owner;
+        const followingUrl = following_url.split("{")[0];
         return (
           <div key={id} className="repoDetails" data-cy={`repoDetails-${id}`}>
-            <div className="info" data-cy="userName">
-              User: {login}
+            <div className="nameAndAvatar">
+              <img
+                src={avatar_url}
+                alt={`${login} avatar`}
+                className="avatar"
+                data-cy="userAvatar"
+              />
+              <span data-cy="userName" className="name">
+                {login.toUpperCase()}
+              </span>
             </div>
-            <img
-              src={avatar_url}
-              alt={`${login} avatar`}
-              className="avatar"
-              data-cy="userAvatar"
-            />
             <div className="info" data-cy="repoTitle">
-              Repo: {name}
-            </div>
-            <div className="info" data-cy="repoDescription">
-              Description: {description}
-            </div>
-            <div className="info" data-cy="repoFork">
-              Fork: {fork ? "yup" : "nope"}
-            </div>
-            <div className="info">
+              Repo:
               <a
                 href={html_url}
                 target="blank"
                 rel="noreferrer noopener"
                 data-cy="repoLink"
+                className="repoLink"
               >
-                Click here to inspect <strong>{name}</strong> yourself
+                {name}
               </a>
             </div>
+            <div className="info" data-cy="repoDescription">
+              Description: {description}
+            </div>
+            <UserInfo url={repos_url} category="repos" />
+            <UserInfo url={followingUrl} category="following" />
+            <UserInfo url={followers_url} category="followers" />
           </div>
         );
       })}

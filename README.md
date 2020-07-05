@@ -1,8 +1,8 @@
 # GitHub Explorer 🧐
 #### [You can check out the deployed version here](https://github-explorer-by-ov.netlify.app/)
-This is a project that displays a list of public GitHub repos, callin its API. 
-<br>It displays a serch input that also allows to search and filter them, depending on what the user types. 
-<br>In addition the user gets extra info about the repo by clicking on it, once it is displayed.
+This is a project that displays a list of GitHub users and public repos, callin its API. 
+<br>It displays a serch input that also allows to search and filter them, depending on what the you type. 
+<br>In addition you get extra info about the user/repo  by clicking on it, once it is displayed.
 
 ## Getting Started
 

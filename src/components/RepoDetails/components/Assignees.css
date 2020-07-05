@@ -1,0 +1,28 @@
+.assigneesInfosWrapper {
+  margin: 10px 0 20px;
+  max-height: 120px;
+  max-width: 500px;
+  overflow-x: scroll;
+  display: flex;
+}
+.assigneesInfoLine {
+  cursor: pointer;
+  padding: 0 20px 0 10px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  color: #282c34;
+  text-decoration: none;
+}
+
+.assigneesInfoLine:hover,
+.assigneesInfoLine:active,
+.assigneesInfoLine:visited {
+  color: #03c2fc;
+}
+
+.avatars {
+  max-width: 29px;
+  border-radius: 50%;
+  margin: 0 10px 0 -10px;
+}

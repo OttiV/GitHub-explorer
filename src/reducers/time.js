@@ -1,4 +1,4 @@
-import { SET_REPO_TIME, SET_REPOS_TIME } from "../actions/repos";
+import { SET_REPO_TIME, SET_REPOS_TIME } from "../actions/reposActions";
 import { SET_USERS_TIME, SET_USER_TIME } from "../actions/usersActions";
 
 export default (state = 0, { type, payload }) => {

@@ -12,12 +12,13 @@ const ReposList = ({ repos, loading }) => {
       )}
       <div className={repoListClass} data-cy="reposList">
         {repos.map(repo => {
-          const { name, id } = repo;
+          const { name, id, owner } = repo;
+          const { login } = owner;
 
           return (
             <Link
               key={id}
-              to={`/repos/${name}`}
+              to={`/repos/${login}/${name}`}
               className="repoLine"
               data-cy="repoLine"
             >

@@ -10,6 +10,9 @@
   border-radius: 0.4em;
   background-color: #fff;
   padding: 20px 20px 0;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .avatar {
@@ -19,10 +22,15 @@
   border-radius: 50%;
 }
 
-.info {
+.userInfo {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 450px;
+  justify-content: center;
+  margin-right: 30px;
+}
+.ìnfoWrapper {
+  flex: 2;
 }
 
 .name {

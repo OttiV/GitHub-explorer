@@ -1,14 +1,15 @@
 import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { fetchRepo, fetchRepoSuccess } from "../../actions/repos";
+import { fetchRepo, fetchRepoSuccess } from "../../actions/reposActions";
 import { Spinner } from "../Spinner";
 const RepoDetails = lazy(() => import("./RepoDetails"));
 
 class RepoDetailsContainer extends Component {
   componentDidMount() {
     const { match, fetchRepo } = this.props;
-    const name = match.params.name;
-    fetchRepo(name);
+    const { name, login } = match.params;
+    const nameAndLogin = [name, login];
+    fetchRepo(nameAndLogin);
   }
 
   render() {

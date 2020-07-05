@@ -2,7 +2,7 @@ import {
   FETCH_REPOS_REQUEST,
   FETCH_REPOS_SUCCESS,
   FETCH_REPOS_FAILURE
-} from "../actions/repos";
+} from "../actions/reposActions";
 
 const initialState = {
   loading: false,

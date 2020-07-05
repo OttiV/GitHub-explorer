@@ -16,7 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/repos" component={ReposList} />
-        <Route path="/repos/:name" component={RepoDetails} />
+        <Route path="/repos/:login/:name" component={RepoDetails} />
         <Route exact path="/users" component={UsersList} />
         <Route path="/users/:name" component={UserDetails} />
       </Switch>

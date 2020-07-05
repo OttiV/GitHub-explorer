@@ -7,14 +7,17 @@ import "./Header.css";
 const Header = ({ time }) => {
   return (
     <div className="header" data-cy="header">
-      <Link to="/" className="homeLink" data-cy="homeLink">
-        GitHub Explorer
-      </Link>
+      <div className="titleAndMenu">
+        <Link to="/" className="homeLink" data-cy="homeLink">
+          GitHub Explorer
+        </Link>
+        {/* <div className="burgerMenu"></div> */}
+      </div>
       <div className="dateInfo">
         {time ? (
           <span data-cy="dateInfo">{orderTimeAndDate(time)}</span>
         ) : (
-          <Spinner small={true} light={true} />
+          <Spinner size="small" theme="light" />
         )}
       </div>
     </div>

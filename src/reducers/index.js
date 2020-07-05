@@ -5,6 +5,8 @@ import repo from "./repo";
 import repos from "./repos";
 import search from "./search";
 import time from "./time";
+import user from "./user";
+import users from "./users";
 
 export default combineReducers({
   location,
@@ -12,5 +14,7 @@ export default combineReducers({
   repo,
   repos,
   search,
-  time
+  time,
+  user,
+  users
 });

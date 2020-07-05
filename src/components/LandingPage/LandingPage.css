@@ -1,0 +1,28 @@
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0;
+  font-size: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+.backButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 0.2em;
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #282c34;
+  color: #fff;
+}

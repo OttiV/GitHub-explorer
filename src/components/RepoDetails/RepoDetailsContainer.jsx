@@ -7,8 +7,8 @@ const RepoDetails = lazy(() => import("./RepoDetails"));
 class RepoDetailsContainer extends Component {
   componentDidMount() {
     const { match, fetchRepo } = this.props;
-    const id = parseInt(match.params.name);
-    fetchRepo(id);
+    const name = match.params.name;
+    fetchRepo(name);
   }
 
   render() {

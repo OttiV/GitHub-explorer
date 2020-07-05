@@ -1,0 +1,41 @@
+.userInfosWrapper {
+  margin: 10px 0 20px;
+  height: 120px;
+  overflow-y: scroll;
+  border: #282c34 1px solid;
+  border-radius: 0.2em;
+  justify-content: center;
+}
+
+.userInfoLine {
+  cursor: pointer;
+  height: 30px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: #282c34 1px solid;
+  color: #282c34;
+  text-decoration: none;
+}
+
+.userInfoLine:last-child {
+  border-bottom: transparent;
+}
+
+.userInfoLine:hover {
+  background-color: #282c34;
+  color: #fff;
+}
+
+.userInfoLine:active,
+.userInfoLine:visited {
+  background-color: #ebf1ff;
+}
+
+.avatars {
+  max-width: 29px;
+  max-height: 29px;
+  border-radius: 50%;
+  margin: 0 10px 0 -10px;
+}

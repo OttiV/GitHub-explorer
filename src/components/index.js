@@ -1,3 +1,6 @@
 export { HeaderContainer } from "./Header";
-export { ReposListContainer } from "./RepoList";
+export { LandingPage } from "./LandingPage";
 export { RepoDetailsContainer } from "./RepoDetails";
+export { ReposListContainer } from "./RepoList";
+export { UserDetailsContainer } from "./UserDetails";
+export { UsersListContainer } from "./UsersList";

@@ -82,13 +82,15 @@ const fetchRepoFailure = error => {
   };
 };
 
-export const fetchRepo = id => {
+export const fetchRepo = name => {
   return function(dispatch) {
     dispatch(fetchRepoRequest());
     const startTime = getTime();
     request(baseUrl)
       .then(response => {
-        const filteredResponse = response.body.filter(repo => repo.id === id);
+        const filteredResponse = response.body.filter(
+          repo => repo.name === name
+        );
         dispatch(fetchRepoSuccess(filteredResponse));
         const endTime = getTime();
         const time = endTime - startTime;

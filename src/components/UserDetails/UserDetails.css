@@ -1,24 +1,32 @@
-.repoDetailsWrapper {
+.userDetailsWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 40px;
 }
 
-.repoDetails {
+.userDetails {
   border: solid 0.5px;
   border-radius: 0.4em;
   background-color: #fff;
+  padding: 20px 20px 0;
 }
 
 .avatar {
+  margin-bottom: 20px;
   max-width: 180px;
   max-height: 180px;
   border-radius: 50%;
-  margin: 20px;
 }
 
 .info {
-  margin: 20px;
-  width: 400px;
+  display: flex;
+  align-items: center;
+  width: 450px;
+}
+
+.name {
+  margin-left: 40px;
+  font-weight: 600;
+  font-size: 20px;
 }

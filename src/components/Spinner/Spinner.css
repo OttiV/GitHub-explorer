@@ -9,13 +9,16 @@
 .dark {
   color: #282c34;
 }
+
 .light {
   color: #f0f8ff;
 }
+
 .big {
   font-size: 80px;
   margin: 72px auto;
 }
+
 .small {
   font-size: 15px;
   margin-left: 10px;

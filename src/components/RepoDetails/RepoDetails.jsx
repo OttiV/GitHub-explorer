@@ -1,6 +1,6 @@
 import React from "react";
 import { BackLinkAndTime } from "../BackLinkAndTime";
-import { UserInfo } from "../UserDetails/components";
+import { RepoInfo } from "./components";
 import "./RepoDetails.css";
 
 const RepoDetails = ({ repo, resetRepo, time }) => (
@@ -14,17 +14,34 @@ const RepoDetails = ({ repo, resetRepo, time }) => (
     />
     <div className="repoDetailsWrapper" data-cy="repoDetailsWrapper">
       {repo.map(rep => {
-        const { id, owner, name, description, html_url } = rep;
         const {
-          login,
-          avatar_url,
-          repos_url,
-          following_url,
-          followers_url
-        } = owner;
-        const followingUrl = following_url.split("{")[0];
+          id,
+          owner,
+          name,
+          description,
+          html_url,
+          assignees_url,
+          contents_url
+        } = rep;
+        const { login, avatar_url } = owner;
+        const contentsSplitUrl = contents_url.split("{+path}");
+        const contentsUrl = contentsSplitUrl[0];
+        const assigneesSplitUrl = assignees_url.split("{/user}");
+        const assigneesUrl = assigneesSplitUrl[0];
+
         return (
           <div key={id} className="repoDetails" data-cy={`repoDetails-${id}`}>
+            <div className="title" data-cy="repoTitle">
+              <a
+                href={html_url}
+                target="blank"
+                rel="noreferrer noopener"
+                data-cy="repoLink"
+                className="repoLink"
+              >
+                {name.toUpperCase()}
+              </a>
+            </div>
             <div className="nameAndAvatar">
               <img
                 src={avatar_url}
@@ -33,27 +50,14 @@ const RepoDetails = ({ repo, resetRepo, time }) => (
                 data-cy="userAvatar"
               />
               <span data-cy="userName" className="name">
-                {login.toUpperCase()}
+                by {login}
               </span>
-            </div>
-            <div className="info" data-cy="repoTitle">
-              Repo:
-              <a
-                href={html_url}
-                target="blank"
-                rel="noreferrer noopener"
-                data-cy="repoLink"
-                className="repoLink"
-              >
-                {name}
-              </a>
             </div>
             <div className="info" data-cy="repoDescription">
               Description: {description}
             </div>
-            <UserInfo url={repos_url} category="repos" />
-            <UserInfo url={followingUrl} category="following" />
-            <UserInfo url={followers_url} category="followers" />
+            <RepoInfo url={contentsUrl} category="contents" />
+            <RepoInfo url={assigneesUrl} category="assignees" />
           </div>
         );
       })}

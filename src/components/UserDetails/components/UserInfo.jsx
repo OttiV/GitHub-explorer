@@ -43,11 +43,10 @@ class UserInfo extends Component {
     };
     const elements = getElements(category);
     const { value, loading } = elements;
-    console.log(value);
     const numOfElements = value.length > 1 ? value.length : "No";
     return (
       <div>
-        {numOfElements} {category} found:
+        {numOfElements} {category}
         <div className="userInfosWrapper">
           {loading && <Spinner />}
           {value.map(element => {

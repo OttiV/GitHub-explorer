@@ -13,8 +13,7 @@
 }
 
 .avatar {
-  max-width: 180px;
-  max-height: 180px;
+  max-width: 50px;
   border-radius: 50%;
 }
 
@@ -26,17 +25,22 @@
 .repoLink {
   color: black;
   margin-inline-start: 5px;
-  font-weight: 500;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  width: 450px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 .nameAndAvatar {
   display: flex;
   align-items: center;
-  width: 450px;
 }
 
 .name {
-  margin-left: 40px;
-  font-weight: 600;
-  font-size: 20px;
+  margin-left: 10px;
 }

@@ -1,0 +1,41 @@
+.repoInfosWrapper {
+  margin: 10px 0 20px;
+  /* height: 120px; */
+  overflow-y: scroll;
+  border: #282c34 1px solid;
+  border-radius: 0.2em;
+  justify-content: center;
+}
+
+.repoInfoLine {
+  cursor: pointer;
+  height: 30px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: #282c34 1px solid;
+  color: #282c34;
+  text-decoration: none;
+}
+
+.repoInfoLine:last-child {
+  border-bottom: transparent;
+}
+
+.repoInfoLine:hover {
+  background-color: #282c34;
+  color: #fff;
+}
+
+.repoInfoLine:active,
+.repoInfoLine:visited {
+  background-color: #ebf1ff;
+}
+
+.avatars {
+  max-width: 29px;
+  max-height: 29px;
+  border-radius: 50%;
+  margin: 0 10px 0 -10px;
+}
